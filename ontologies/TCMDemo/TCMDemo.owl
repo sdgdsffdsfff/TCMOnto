@@ -1,0 +1,144 @@
+Prefix: xsd: <http://www.w3.org/2001/XMLSchema#>
+Prefix: owl: <http://www.w3.org/2002/07/owl#>
+Prefix: xml: <http://www.w3.org/XML/1998/namespace>
+Prefix: rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+Prefix: dc: <http://purl.org/dc/elements/1.1/>
+Prefix: rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+
+
+Ontology: <http://www.semanticweb.org/ontologies/2012/6/Ontology1343466572406.owl>
+
+
+ObjectProperty: <http://www.semanticweb.org/ontologies/2012/6/Ontology1343466572406.owl#nourishes>
+
+    SubPropertyOf: 
+        <http://www.semanticweb.org/ontologies/2012/6/Ontology1343466572406.owl#engenders>
+    
+    
+ObjectProperty: <http://www.semanticweb.org/ontologies/2012/6/Ontology1343466572406.owl#affects>
+
+    
+ObjectProperty: <http://www.semanticweb.org/ontologies/2012/6/Ontology1343466572406.owl#engenders>
+
+    SubPropertyOf: 
+        <http://www.semanticweb.org/ontologies/2012/6/Ontology1343466572406.owl#affects>
+    
+    
+Class: <http://www.semanticweb.org/ontologies/2012/6/Ontology1343466572406.owl#Smelling_Examination>
+
+    SubClassOf: 
+        <http://www.semanticweb.org/ontologies/2012/6/Ontology1343466572406.owl#Listening_And_Smelling_Examination>
+    
+    
+Class: <http://www.semanticweb.org/ontologies/2012/6/Ontology1343466572406.owl#Inspection>
+
+    SubClassOf: 
+        <http://www.semanticweb.org/ontologies/2012/6/Ontology1343466572406.owl#Diagnosis>
+    
+    
+Class: <http://www.semanticweb.org/ontologies/2012/6/Ontology1343466572406.owl#Palpation>
+
+    SubClassOf: 
+        <http://www.semanticweb.org/ontologies/2012/6/Ontology1343466572406.owl#Diagnosis>
+    
+    
+Class: <http://www.semanticweb.org/ontologies/2012/6/Ontology1343466572406.owl#Four_Examinations>
+
+    EquivalentTo: 
+        <http://www.semanticweb.org/ontologies/2012/6/Ontology1343466572406.owl#Inquiry>
+         or <http://www.semanticweb.org/ontologies/2012/6/Ontology1343466572406.owl#Inspection>
+         or <http://www.semanticweb.org/ontologies/2012/6/Ontology1343466572406.owl#Listening_And_Smelling_Examination>
+         or <http://www.semanticweb.org/ontologies/2012/6/Ontology1343466572406.owl#Palpation>
+    
+    SubClassOf: 
+        <http://www.semanticweb.org/ontologies/2012/6/Ontology1343466572406.owl#Diagnosis>
+    
+    
+Class: <http://www.semanticweb.org/ontologies/2012/6/Ontology1343466572406.owl#Listening_Examination>
+
+    SubClassOf: 
+        <http://www.semanticweb.org/ontologies/2012/6/Ontology1343466572406.owl#Listening_And_Smelling_Examination>
+    
+    
+Class: <http://www.semanticweb.org/ontologies/2012/6/Ontology1343466572406.owl#Listening_Sounds_of_Breathing>
+
+    SubClassOf: 
+        <http://www.semanticweb.org/ontologies/2012/6/Ontology1343466572406.owl#Listening_Examination>
+    
+    
+Class: <http://www.semanticweb.org/ontologies/2012/6/Ontology1343466572406.owl#Five_Viscera>
+
+    EquivalentTo: 
+        {<http://www.semanticweb.org/ontologies/2012/6/Ontology1343466572406.owl#Heart> , <http://www.semanticweb.org/ontologies/2012/6/Ontology1343466572406.owl#Kidney> , <http://www.semanticweb.org/ontologies/2012/6/Ontology1343466572406.owl#Liver> , <http://www.semanticweb.org/ontologies/2012/6/Ontology1343466572406.owl#Lung> , <http://www.semanticweb.org/ontologies/2012/6/Ontology1343466572406.owl#Spleen>}
+    
+    SubClassOf: 
+        <http://www.semanticweb.org/ontologies/2012/6/Ontology1343466572406.owl#Viscus>
+    
+    
+Class: <http://www.semanticweb.org/ontologies/2012/6/Ontology1343466572406.owl#Viscus>
+
+    
+Class: <http://www.semanticweb.org/ontologies/2012/6/Ontology1343466572406.owl#Inquiry>
+
+    SubClassOf: 
+        <http://www.semanticweb.org/ontologies/2012/6/Ontology1343466572406.owl#Diagnosis>
+    
+    
+Class: <http://www.semanticweb.org/ontologies/2012/6/Ontology1343466572406.owl#Diagnosis>
+
+    
+Class: <http://www.semanticweb.org/ontologies/2012/6/Ontology1343466572406.owl#Five_Phases>
+
+    
+Class: <http://www.semanticweb.org/ontologies/2012/6/Ontology1343466572406.owl#Listening_And_Smelling_Examination>
+
+    SubClassOf: 
+        <http://www.semanticweb.org/ontologies/2012/6/Ontology1343466572406.owl#Diagnosis>
+    
+    
+Individual: <http://www.semanticweb.org/ontologies/2012/6/Ontology1343466572406.owl#Wood>
+
+    Types: 
+        <http://www.semanticweb.org/ontologies/2012/6/Ontology1343466572406.owl#Five_Phases>
+    
+    
+Individual: <http://www.semanticweb.org/ontologies/2012/6/Ontology1343466572406.owl#Liver>
+
+    Types: 
+        <http://www.semanticweb.org/ontologies/2012/6/Ontology1343466572406.owl#Viscus>
+    
+    
+Individual: <http://www.semanticweb.org/ontologies/2012/6/Ontology1343466572406.owl#Lung>
+
+    Types: 
+        <http://www.semanticweb.org/ontologies/2012/6/Ontology1343466572406.owl#Viscus>
+    
+    
+Individual: <http://www.semanticweb.org/ontologies/2012/6/Ontology1343466572406.owl#Kidney>
+
+    Types: 
+        <http://www.semanticweb.org/ontologies/2012/6/Ontology1343466572406.owl#Viscus>
+    
+    
+Individual: <http://www.semanticweb.org/ontologies/2012/6/Ontology1343466572406.owl#Spleen>
+
+    Types: 
+        <http://www.semanticweb.org/ontologies/2012/6/Ontology1343466572406.owl#Viscus>
+    
+    
+Individual: <http://www.semanticweb.org/ontologies/2012/6/Ontology1343466572406.owl#Water>
+
+    Types: 
+        <http://www.semanticweb.org/ontologies/2012/6/Ontology1343466572406.owl#Five_Phases>
+    
+    Facts:  
+     <http://www.semanticweb.org/ontologies/2012/6/Ontology1343466572406.owl#nourishes>  <http://www.semanticweb.org/ontologies/2012/6/Ontology1343466572406.owl#Wood>
+    
+    
+Individual: <http://www.semanticweb.org/ontologies/2012/6/Ontology1343466572406.owl#Heart>
+
+    Types: 
+        <http://www.semanticweb.org/ontologies/2012/6/Ontology1343466572406.owl#Viscus>
+    
+    

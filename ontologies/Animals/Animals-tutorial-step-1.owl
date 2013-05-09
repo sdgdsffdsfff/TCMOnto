@@ -1,0 +1,751 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns="http://www.owl-ontologies.com/unnamed.owl#"
+  xml:base="http://www.owl-ontologies.com/unnamed.owl">
+  <owl:Ontology rdf:about="">
+    <owl:imports>
+      <owl:Ontology rdf:about="http://protege.stanford.edu/plugins/owl/protege"/>
+    </owl:imports>
+  </owl:Ontology>
+  <owl:Ontology rdf:about="http://protege.stanford.edu/plugins/owl/protege">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The Protege metadata ontology (in the version that is used inside Protege. Note that this is an OWL Full ontology, with annotation properties that have range and domain restrictions. However, the "official" online release of this file is OWL DL, so that ontologies that use Protege metadata annotations can still be shared as OWL DL.</rdfs:comment>
+  </owl:Ontology>
+  <owl:Class rdf:ID="Animal">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A short list of classes of animals - could be filled out in more detail. 
+
+Disjoint with Plant.
+
+Be sure to make all the primitive kinds of animals disjoint. </rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Living_thing"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Plant"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:ID="ValuePartition">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Domain_entity"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Living_thing"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Value"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Quality"/>
+    </owl:disjointWith>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A partition of the values for a property.  
+
+Used in the ValuePartition pattern.  The subclasses of each ValuePartition are disjoint and "cover" the partition.  </rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Todler_value">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Child_value"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Infant_value"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:ID="Reptile">
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Fish"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Bird"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Mammal"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="#Animal"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Bird">
+    <owl:disjointWith rdf:resource="#Reptile"/>
+    <rdfs:subClassOf rdf:resource="#Animal"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Fish"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Mammal"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#Fish">
+    <owl:disjointWith rdf:resource="#Bird"/>
+    <owl:disjointWith rdf:resource="#Reptile"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Mammal"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="#Animal"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Dangerousness">
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Domestication"/>
+    </owl:disjointWith>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The value partition for Dangerousness
+
+Note the covering axiom that the class is equivalent to the disjunction (unionOf) its child classes which are themselves disjoint. </rdfs:comment>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Age_group"/>
+    </owl:disjointWith>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:ID="Dangerous"/>
+          <owl:Class rdf:ID="Risky"/>
+          <owl:Class rdf:ID="Safe"/>
+        </owl:unionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:subClassOf rdf:resource="#ValuePartition"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Elderly_value">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Adult_value"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Person">
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Cat"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Cow"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Pig"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Mammal"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Herbivore">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Animal that only eats plants
+
+Defined class.  
+Demonstrates use of 'only' and closure axioms.
+
+Be sure that Cow classifies under Herbivore.  Be sure you know why.</rdfs:comment>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:allValuesFrom>
+              <owl:Class rdf:about="#Plant"/>
+            </owl:allValuesFrom>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:ID="eats"/>
+            </owl:onProperty>
+          </owl:Restriction>
+          <owl:Class rdf:about="#Animal"/>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:about="#Quality">
+    <owl:disjointWith rdf:resource="#ValuePartition"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Domain_entity"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Value"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Living_thing"/>
+    </owl:disjointWith>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Qualities of thing.
+
+Can be vieweded as "Properties re-represnted as classes".  See "n-ary relations" pattern.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#Infant_value">
+    <owl:disjointWith rdf:resource="#Todler_value"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Child_value"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Carp">
+    <rdfs:subClassOf rdf:resource="#Fish"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Wild_value">
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Feral_value"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Domestic_value"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Domestication"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Leafy_plant">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Plant"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Tree">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Plant"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Grass"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#Child_value">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Adult_value"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Age_group"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Domestication">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Domestic_value"/>
+          <owl:Class rdf:about="#Wild_value"/>
+          <owl:Class rdf:about="#Feral_value"/>
+        </owl:unionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Age_group"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Dangerousness"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The value partition for Domestication
+
+Note the covering axiom that the class is equivalent to the disjunction (unionOf) its child classes which are themselves disjoint. </rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#ValuePartition"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Domestic_value">
+    <rdfs:subClassOf rdf:resource="#Domestication"/>
+    <owl:disjointWith rdf:resource="#Wild_value"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Feral_value"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#Plant">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >A short list of classes of plants - could be filled out in more detail. 
+
+Disjoint with Animal.
+
+Be sure to make all the primitive kinds of plants disjoint. </rdfs:comment>
+    <owl:disjointWith rdf:resource="#Animal"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Living_thing"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Omnivore">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Animal"/>
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#eats"/>
+            </owl:onProperty>
+            <owl:someValuesFrom rdf:resource="#Animal"/>
+          </owl:Restriction>
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#eats"/>
+            </owl:onProperty>
+            <owl:someValuesFrom rdf:resource="#Plant"/>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Animal that east some animals and some plants.
+
+Note difference in definition with "Herbivore" and "Carnivore".</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Dangerous_animal">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Animal"/>
+          <owl:Restriction>
+            <owl:someValuesFrom>
+              <owl:Class rdf:about="#Dangerous"/>
+            </owl:someValuesFrom>
+            <owl:onProperty>
+              <owl:FunctionalProperty rdf:ID="has_dangerousness"/>
+            </owl:onProperty>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Animal that has_dangerousness Dangerous
+
+Defined class
+Demonstrates use of value partitions
+</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#Value">
+    <owl:disjointWith rdf:resource="#Quality"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Living_thing"/>
+    </owl:disjointWith>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Types of values to be represented as individuals.  Used in the ValueSet pattern.</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Domain_entity"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#ValuePartition"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Cow">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Cat"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Pig"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="#Safe"/>
+        </owl:someValuesFrom>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#has_dangerousness"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#Person"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="#Grass"/>
+        </owl:someValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#eats"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Mammal"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#eats"/>
+        </owl:onProperty>
+        <owl:allValuesFrom>
+          <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+              <owl:Class rdf:about="#Grass"/>
+              <owl:Class rdf:about="#Leafy_plant"/>
+            </owl:unionOf>
+          </owl:Class>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom rdf:resource="#Leafy_plant"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#eats"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Cat">
+    <owl:disjointWith rdf:resource="#Person"/>
+    <owl:disjointWith rdf:resource="#Cow"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#eats"/>
+        </owl:onProperty>
+        <owl:allValuesFrom rdf:resource="#Animal"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Pig"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom rdf:resource="#Animal"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#eats"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Mammal"/>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#has_dangerousness"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="#Dangerousness"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Heiffer">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Cow"/>
+          <owl:Restriction>
+            <owl:hasValue>
+              <Sex_value rdf:ID="female"/>
+            </owl:hasValue>
+            <owl:onProperty>
+              <owl:FunctionalProperty rdf:ID="has_sex"/>
+            </owl:onProperty>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:about="#Domain_entity">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The top class defined by the user that really pertains to the "domain" - in this case "Living things".
+
+It is always a good idea to have your own top class under owl:Thing rather than using owl:Thing directly. </rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Sex_value">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:oneOf rdf:parseType="Collection">
+          <Sex_value rdf:ID="male"/>
+          <Sex_value rdf:about="#female"/>
+        </owl:oneOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Sex defined as one of {male female}
+
+See Individuals
+
+Used in ValueSet pattern
+</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#Value"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Bull">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Cow"/>
+          <owl:Restriction>
+            <owl:hasValue rdf:resource="#male"/>
+            <owl:onProperty>
+              <owl:FunctionalProperty rdf:about="#has_sex"/>
+            </owl:onProperty>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:about="#Living_thing">
+    <owl:disjointWith rdf:resource="#Value"/>
+    <rdfs:subClassOf rdf:resource="#Domain_entity"/>
+    <owl:disjointWith rdf:resource="#ValuePartition"/>
+    <owl:disjointWith rdf:resource="#Quality"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The top notion in the Living Things ontology. </rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Lion">
+    <rdfs:subClassOf rdf:resource="#Cat"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="#Dangerous"/>
+        </owl:someValuesFrom>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#has_dangerousness"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Calf">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Cow"/>
+          <owl:Restriction>
+            <owl:someValuesFrom rdf:resource="#Child_value"/>
+            <owl:onProperty>
+              <owl:FunctionalProperty rdf:ID="has_age_group"/>
+            </owl:onProperty>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:about="#Adult_value">
+    <owl:disjointWith rdf:resource="#Child_value"/>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Age_group"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Grass">
+    <owl:disjointWith rdf:resource="#Tree"/>
+    <rdfs:subClassOf rdf:resource="#Plant"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Risk">
+    <rdfs:subClassOf rdf:resource="#Quality"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The risk associated with an living thing.
+
+An example quality to demonstrate the n-ary relation pattern. </rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="Domestic_cat">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Class rdf:about="#Safe"/>
+        </owl:someValuesFrom>
+        <owl:onProperty>
+          <owl:FunctionalProperty rdf:about="#has_dangerousness"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#Cat"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Crocadilian">
+    <rdfs:subClassOf rdf:resource="#Reptile"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Safe">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Risky"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="#Dangerousness"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Dangerous"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:ID="Female_animal">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Animal that has sex female
+
+Defined class
+Demonstrates use of value sets</rdfs:comment>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Animal"/>
+          <owl:Restriction>
+            <owl:hasValue rdf:resource="#female"/>
+            <owl:onProperty>
+              <owl:FunctionalProperty rdf:about="#has_sex"/>
+            </owl:onProperty>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:about="#Age_group">
+    <owl:disjointWith rdf:resource="#Dangerousness"/>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Infant_value"/>
+          <owl:Class rdf:about="#Todler_value"/>
+          <owl:Class rdf:about="#Child_value"/>
+          <owl:Class rdf:about="#Adult_value"/>
+          <owl:Class rdf:about="#Elderly_value"/>
+        </owl:unionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >The value partition for age group.
+
+Note the covering axiom that the class is equivalent to the disjunction (unionOf) its child classes which are themselves disjoint. </rdfs:comment>
+    <owl:disjointWith rdf:resource="#Domestication"/>
+    <rdfs:subClassOf rdf:resource="#ValuePartition"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Lizard">
+    <rdfs:subClassOf rdf:resource="#Reptile"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Feral_value">
+    <owl:disjointWith rdf:resource="#Domestic_value"/>
+    <owl:disjointWith rdf:resource="#Wild_value"/>
+    <rdfs:subClassOf rdf:resource="#Domestication"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Mammal">
+    <rdfs:subClassOf rdf:resource="#Animal"/>
+    <owl:disjointWith rdf:resource="#Fish"/>
+    <owl:disjointWith rdf:resource="#Bird"/>
+    <owl:disjointWith rdf:resource="#Reptile"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Piglet">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Pig"/>
+          <owl:Restriction>
+            <owl:someValuesFrom rdf:resource="#Child_value"/>
+            <owl:onProperty>
+              <owl:FunctionalProperty rdf:about="#has_age_group"/>
+            </owl:onProperty>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:ID="Lioness">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Lion"/>
+          <owl:Restriction>
+            <owl:hasValue rdf:resource="#female"/>
+            <owl:onProperty>
+              <owl:FunctionalProperty rdf:about="#has_sex"/>
+            </owl:onProperty>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+  </owl:Class>
+  <owl:Class rdf:about="#Dangerous">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Risky"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Safe"/>
+    <rdfs:subClassOf rdf:resource="#Dangerousness"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Male_animal">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Animal"/>
+          <owl:Restriction>
+            <owl:hasValue rdf:resource="#male"/>
+            <owl:onProperty>
+              <owl:FunctionalProperty rdf:about="#has_sex"/>
+            </owl:onProperty>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Animal that has sex male
+
+Defined class
+Demonstrates use of value sets</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#Risky">
+    <owl:disjointWith rdf:resource="#Safe"/>
+    <owl:disjointWith rdf:resource="#Dangerous"/>
+    <rdfs:subClassOf rdf:resource="#Dangerousness"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Pig">
+    <owl:disjointWith rdf:resource="#Person"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom rdf:resource="#Animal"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#eats"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#eats"/>
+        </owl:onProperty>
+        <owl:someValuesFrom rdf:resource="#Plant"/>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#Cow"/>
+    <rdfs:subClassOf rdf:resource="#Mammal"/>
+    <owl:disjointWith rdf:resource="#Cat"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Goldfish">
+    <rdfs:subClassOf rdf:resource="#Carp"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Carnivore">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#eats"/>
+            </owl:onProperty>
+            <owl:allValuesFrom rdf:resource="#Animal"/>
+          </owl:Restriction>
+          <owl:Class rdf:about="#Animal"/>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Animal that only eats meat.
+
+Defined class
+</rdfs:comment>
+  </owl:Class>
+  <owl:ObjectProperty rdf:ID="is_eaten_by">
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="#eats"/>
+    </owl:inverseOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="has_parent">
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:ID="is_parent_of"/>
+    </owl:inverseOf>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Relation between parent and child - not used in short tutorial. </rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="has_domestication">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Property for value partition domestication</rdfs:comment>
+    <rdfs:range rdf:resource="#Domestication"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="is_owned_by">
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:ID="owns"/>
+    </owl:inverseOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#eats">
+    <rdfs:domain rdf:resource="#Animal"/>
+    <rdfs:range rdf:resource="#Living_thing"/>
+    <owl:inverseOf rdf:resource="#is_eaten_by"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#is_parent_of">
+    <rdfs:domain rdf:resource="#Animal"/>
+    <owl:inverseOf rdf:resource="#has_parent"/>
+    <rdfs:range rdf:resource="#Animal"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#owns">
+    <rdfs:range rdf:resource="#Domain_entity"/>
+    <rdfs:domain rdf:resource="#Person"/>
+    <owl:inverseOf rdf:resource="#is_owned_by"/>
+  </owl:ObjectProperty>
+  <owl:FunctionalProperty rdf:about="#has_age_group">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Property for value-partition age_group
+</rdfs:comment>
+    <rdfs:range rdf:resource="#Age_group"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#has_sex">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >property for sex value type</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="#has_dangerousness">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >property for value partition dangerousness</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:range rdf:resource="#Dangerousness"/>
+  </owl:FunctionalProperty>
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 1.3, Build 192)  http://protege.stanford.edu -->

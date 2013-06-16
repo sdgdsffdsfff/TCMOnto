@@ -1,0 +1,94 @@
+Prefix: xsd: <http://www.w3.org/2001/XMLSchema#>
+Prefix: owl: <http://www.w3.org/2002/07/owl#>
+Prefix: : <http://www.example.com/>
+Prefix: xml: <http://www.w3.org/XML/1998/namespace>
+Prefix: rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+Prefix: dc: <http://purl.org/dc/elements/1.1/>
+Prefix: www: <http://www.example.com/>
+Prefix: rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+
+
+Ontology: <http://www.example.com/>
+
+
+AnnotationProperty: rdfs:label
+
+    
+AnnotationProperty: rdfs:comment
+
+    
+Datatype: rdf:PlainLiteral
+
+    
+ObjectProperty: owl:topObjectProperty
+
+    
+ObjectProperty: treats
+
+    Annotations: 
+        rdfs:label "治疗"@zh
+    
+    SubPropertyOf: 
+        owl:topObjectProperty
+    
+    
+ObjectProperty: contains
+
+    Annotations: 
+        rdfs:comment "包含"@zh,
+        rdfs:label "包含"@zh
+    
+    
+Class: Medicinal
+
+    Annotations: 
+        rdfs:label "药物"@zh,
+        rdfs:label "Medicinal"@en
+    
+    
+Class: Formula
+
+    Annotations: 
+        rdfs:label "方剂"@zh
+    
+    EquivalentTo: 
+        Medicinal
+         and (contains some Medicinal)
+         and (treats some Syndrome)
+    
+    
+Class: Syndrome
+
+    Annotations: 
+        rdfs:label "证候"@zh
+    
+    
+Individual: four_gentlemen_decoction
+
+    Annotations: 
+        rdfs:label "四君子汤"@zh
+    
+    Types: 
+        Medicinal
+    
+    Facts:  
+     treats  kidney_deficiency,
+     contains  ginseng
+    
+    
+Individual: ginseng
+
+    Annotations: 
+        rdfs:label "人参"@zh
+    
+    Types: 
+        Medicinal
+    
+    
+Individual: kidney_deficiency
+
+    Types: 
+        Syndrome
+    
+    

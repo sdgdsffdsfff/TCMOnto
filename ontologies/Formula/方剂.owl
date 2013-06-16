@@ -1,0 +1,62 @@
+Prefix: xsd: <http://www.w3.org/2001/XMLSchema#>
+Prefix: owl: <http://www.w3.org/2002/07/owl#>
+Prefix: : <http://www.example.com/>
+Prefix: xml: <http://www.w3.org/XML/1998/namespace>
+Prefix: rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+Prefix: dc: <http://purl.org/dc/elements/1.1/>
+Prefix: www: <http://www.example.com/>
+Prefix: rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+
+
+Ontology: <http://www.example.com/>
+
+
+ObjectProperty: 治疗
+
+    SubPropertyOf: 
+        owl:topObjectProperty
+    
+    
+ObjectProperty: owl:topObjectProperty
+
+    
+ObjectProperty: 包含
+
+    
+Class: 方剂
+
+    EquivalentTo: 
+        药物
+         and (包含 some 药物)
+         and (治疗 some 证候)
+    
+    
+Class: 证候
+
+    
+Class: 药物
+
+    
+Individual: 人参
+
+    Types: 
+        药物
+    
+    
+Individual: 四君子汤
+
+    Types: 
+        药物
+    
+    Facts:  
+     包含  人参,
+     治疗  肾虚
+    
+    
+Individual: 肾虚
+
+    Types: 
+        证候
+    
+    

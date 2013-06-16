@@ -1,0 +1,565 @@
+@prefix j.0: <http://ccnt.zju.edu.cn/drugnet#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix p3: <http://ccnt.zju.edu.cn/drugnet/clinic#> .
+@prefix p4: <http://ccnt.zju.edu.cn/drugnet/formula#> .
+@prefix : <http://ccnt.zju.edu.cn/drugnet/drug#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix p2: <http://ccnt.zju.edu.cn/drugnet/therapy#> .
+@prefix p1: <http://ccnt.zju.edu.cn/drugnet/drug#> .
+@base <http://ccnt.zju.edu.cn/drugnet/drug> .
+
+<http://ccnt.zju.edu.cn/drugnet/drug> rdf:type owl:Ontology ;
+                                      
+                                      rdfs:comment "An example of TCM ontology"@en ,
+                                                   "中医药领域本体实例"@zh .
+
+
+#################################################################
+#
+#    Annotation properties
+#
+#################################################################
+
+
+
+
+#################################################################
+#
+#    Datatypes
+#
+#################################################################
+
+
+
+
+#################################################################
+#
+#    Object Properties
+#
+#################################################################
+
+
+###  http://ccnt.zju.edu.cn/drugnet/drug#broaderTransitive
+
+:broaderTransitive rdf:type owl:ObjectProperty ;
+                   
+                   rdfs:label "传递性的广义概念"@zh .
+
+
+
+###  http://ccnt.zju.edu.cn/drugnet/drug#contains
+
+:contains rdf:type owl:ObjectProperty ;
+          
+          rdfs:label "包含"@zh .
+
+
+
+###  http://ccnt.zju.edu.cn/drugnet/drug#containsChemical
+
+:containsChemical rdf:type owl:ObjectProperty ;
+                  
+                  rdfs:label "包含化学物质"@zh ;
+                  
+                  rdfs:range :Chemical ;
+                  
+                  rdfs:domain :Herb ;
+                  
+                  rdfs:subPropertyOf :contains .
+
+
+
+###  http://ccnt.zju.edu.cn/drugnet/drug#containsHerb
+
+:containsHerb rdf:type owl:ObjectProperty ;
+              
+              rdfs:label "包含草药"@zh ;
+              
+              rdfs:domain :Formula ;
+              
+              rdfs:range :Herb ;
+              
+              rdfs:subPropertyOf :contains .
+
+
+
+###  http://ccnt.zju.edu.cn/drugnet/drug#hasHerbalTaste
+
+:hasHerbalTaste rdf:type owl:ObjectProperty ;
+                
+                rdfs:label "具有药味"@zh ;
+                
+                rdfs:domain :Herb ;
+                
+                rdfs:range :HerbalTaste .
+
+
+
+###  http://ccnt.zju.edu.cn/drugnet/drug#hasKing
+
+:hasKing rdf:type owl:ObjectProperty ;
+         
+         rdfs:subPropertyOf :containsHerb .
+
+
+
+###  http://ccnt.zju.edu.cn/drugnet/drug#hasMessenger
+
+:hasMessenger rdf:type owl:ObjectProperty ;
+              
+              rdfs:subPropertyOf :containsHerb .
+
+
+
+###  http://ccnt.zju.edu.cn/drugnet/drug#hasMinister
+
+:hasMinister rdf:type owl:ObjectProperty ;
+             
+             rdfs:subPropertyOf :containsHerb .
+
+
+
+###  http://ccnt.zju.edu.cn/drugnet/drug#hasSubordinate
+
+:hasSubordinate rdf:type owl:ObjectProperty ;
+                
+                rdfs:subPropertyOf :containsHerb .
+
+
+
+###  http://ccnt.zju.edu.cn/drugnet/drug#narrowerTransitive
+
+:narrowerTransitive rdf:type owl:ObjectProperty ;
+                    
+                    rdfs:label "传递性的狭义概念"@zh .
+
+
+
+###  http://ccnt.zju.edu.cn/drugnet/drug#prescribe
+
+:prescribe rdf:type owl:ObjectProperty ;
+           
+           rdfs:label "开处方"@zh ;
+           
+           rdfs:range :Drug ;
+           
+           rdfs:domain :Therapy .
+
+
+
+###  http://ccnt.zju.edu.cn/drugnet/drug#relatedTo
+
+:relatedTo rdf:type owl:ObjectProperty ,
+                    owl:SymmetricProperty ;
+           
+           rdfs:label "相关"@zh ;
+           
+           rdfs:domain :ClinicalCondition ;
+           
+           rdfs:range :ClinicalCondition .
+
+
+
+###  http://ccnt.zju.edu.cn/drugnet/drug#treats
+
+:treats rdf:type owl:ObjectProperty ;
+        
+        rdfs:label "治疗"@zh ;
+        
+        rdfs:range :ClinicalCondition ;
+        
+        rdfs:domain [ rdf:type owl:Class ;
+                      owl:unionOf ( :Drug
+                                    :Therapy
+                                  )
+                    ] .
+
+
+
+
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+
+###  http://ccnt.zju.edu.cn/drugnet/drug#Chemical
+
+:Chemical rdf:type owl:Class ;
+          
+          rdfs:label "Chemical"@en ,
+                     "化学药品"@zh ;
+          
+          rdfs:comment "A substance with a distinct molecular composition that is produced by or used in a chemical process."@en ,
+                       "具有特定的分子组成，并作为化学过程的参与者或产物的物质."@zh .
+
+
+
+###  http://ccnt.zju.edu.cn/drugnet/drug#ClinicalCondition
+
+:ClinicalCondition rdf:type owl:Class ;
+                   
+                   rdfs:label "clinical condition"@en ,
+                              "临床状况"@zh .
+
+
+
+###  http://ccnt.zju.edu.cn/drugnet/drug#Disease
+
+:Disease rdf:type owl:Class ;
+         
+         rdfs:label "Disease"@en ,
+                    "疾病"@zh ;
+         
+         rdfs:subClassOf :ClinicalCondition .
+
+
+
+###  http://ccnt.zju.edu.cn/drugnet/drug#Drug
+
+:Drug rdf:type owl:Class ;
+      
+      rdfs:label "Drug"@en ,
+                 "药物"@zh ;
+      
+      rdfs:comment "A substance intended for use in the diagnosis, cure, mitigation, treatment, or prevention of disease."@en ,
+                   "用于诊断, 治愈, 移除, 治疗, 或预防疾病的物质."@zh .
+
+
+
+###  http://ccnt.zju.edu.cn/drugnet/drug#FiveHerbalTaste
+
+:FiveHerbalTaste rdf:type owl:Class ;
+                 
+                 rdfs:label "五味"@zh ;
+                 
+                 owl:equivalentClass [ rdf:type owl:Class ;
+                                       owl:oneOf ( :Bitter
+                                                   :Pungent
+                                                   :Salty
+                                                   :Sweet
+                                                   :Sour
+                                                 )
+                                     ] ;
+                 
+                 rdfs:subClassOf :HerbalTaste .
+
+
+
+###  http://ccnt.zju.edu.cn/drugnet/drug#Formula
+
+:Formula rdf:type owl:Class ;
+         
+         rdfs:label "Formula"@en ,
+                    "方剂"@zh ;
+         
+         rdfs:subClassOf :Drug ;
+         
+         rdfs:comment "Formula refers to herbal formula in TCM domain, which is prescriptions as mixtures of multiple herbs."@en ,
+                      "方剂指由若干中草药混合而成的处方."@zh .
+
+
+
+###  http://ccnt.zju.edu.cn/drugnet/drug#Herb
+
+:Herb rdf:type owl:Class ;
+      
+      rdfs:label "Herb"@en ,
+                 "中药"@zh ;
+      
+      rdfs:subClassOf :Drug ;
+      
+      rdfs:comment "Herbal medicines include herbs, herbal materials, herbal preparations and finished herbal products, that contain as active ingredients parts of plants, or other plant materials, or combinations thereof."@en ,
+                   "草药包括含有植物、植物原料或其组合等活性成分的药草、药草原料、药草制剂及药草成本."@zh .
+
+
+
+###  http://ccnt.zju.edu.cn/drugnet/drug#HerbalTaste
+
+:HerbalTaste rdf:type owl:Class ;
+             
+             rdfs:label "药味"@zh .
+
+
+
+###  http://ccnt.zju.edu.cn/drugnet/drug#Symptom
+
+:Symptom rdf:type owl:Class ;
+         
+         rdfs:label "Symptom"@en ,
+                    "症状"@zh ;
+         
+         rdfs:subClassOf :ClinicalCondition .
+
+
+
+###  http://ccnt.zju.edu.cn/drugnet/drug#Syndrome
+
+:Syndrome rdf:type owl:Class ;
+          
+          rdfs:label "Syndrome"@en ,
+                     "证侯"@zh ;
+          
+          rdfs:subClassOf :ClinicalCondition ;
+          
+          rdfs:comment "syndrome refers to the association of several clinically recognizable features."@en ,
+                       "证侯是中医对人体病变的分类体系."@zh .
+
+
+
+###  http://ccnt.zju.edu.cn/drugnet/drug#Therapy
+
+:Therapy rdf:type owl:Class ;
+         
+         rdfs:label "therapy"@en ,
+                    "疗法"@zh ;
+         
+         rdfs:comment "Therapy, or treatment, is the attempted remediation of a health problem."@en ,
+                      "疗法是指用于解决健康问题的方法."@zh .
+
+
+
+
+
+#################################################################
+#
+#    Individuals
+#
+#################################################################
+
+
+###  http://ccnt.zju.edu.cn/drugnet/clinic#AD
+
+p3:AD rdf:type :Disease ,
+               owl:NamedIndividual ;
+      
+      rdfs:label "Alzheimer's Disease"@en ,
+                 "阿尔茨海默症"@zh ;
+      
+      rdfs:comment "A human degenerative disorder characterized by progressive dementia."@en ,
+                   "以渐进性痴呆为特征的人类退化性紊乱."@zh .
+
+
+
+###  http://ccnt.zju.edu.cn/drugnet/clinic#deficiency
+
+p3:deficiency rdf:type :Syndrome ,
+                       owl:NamedIndividual ;
+              
+              rdfs:label "Deficiency"@en ,
+                         "虚证"@zh ;
+              
+              :broaderTransitive p3:kidneyDeficiency ,
+                                 p3:kidneyYangDeficiency ,
+                                 p3:yangDeficiency .
+
+
+
+###  http://ccnt.zju.edu.cn/drugnet/clinic#kidneyDeficiency
+
+p3:kidneyDeficiency rdf:type :Syndrome ,
+                             owl:NamedIndividual ;
+                    
+                    rdfs:label "Kideny Deficiency"@en ,
+                               "肾虚证"@zh .
+
+
+
+###  http://ccnt.zju.edu.cn/drugnet/clinic#kidneyYangDeficiency
+
+p3:kidneyYangDeficiency rdf:type :Syndrome ,
+                                 owl:NamedIndividual ;
+                        
+                        rdfs:label "Kideny Yang Deficiency"@en ,
+                                   "肾阳虚证"@zh ;
+                        
+                        :relatedTo p3:AD ;
+                        
+                        :narrowerTransitive p3:deficiency ,
+                                            p3:kidneyDeficiency ;
+                        
+                        :relatedTo p3:memoryLoss ,
+                                   p3:pregnancy ;
+                        
+                        :narrowerTransitive p3:yangDeficiency .
+
+
+
+###  http://ccnt.zju.edu.cn/drugnet/clinic#memoryLoss
+
+p3:memoryLoss rdf:type :Symptom ,
+                       owl:NamedIndividual ;
+              
+              rdfs:label "Memory Loss"@en ,
+                         "记忆减退"@zh ;
+              
+              :relatedTo p3:kidneyYangDeficiency .
+
+
+
+###  http://ccnt.zju.edu.cn/drugnet/clinic#pregnancy
+
+p3:pregnancy rdf:type :ClinicalCondition ,
+                      owl:NamedIndividual ;
+             
+             rdfs:label "pregnancy"@en ,
+                        "怀孕"@zh .
+
+
+
+###  http://ccnt.zju.edu.cn/drugnet/clinic#yangDeficiency
+
+p3:yangDeficiency rdf:type :Syndrome ,
+                           owl:NamedIndividual ;
+                  
+                  rdfs:label "Yang Deficiency"@en ,
+                             "阳虚证"@zh .
+
+
+
+###  http://ccnt.zju.edu.cn/drugnet/drug#Atractylodes
+
+:Atractylodes rdf:type :Herb ,
+                       owl:NamedIndividual ;
+              
+              rdfs:label "白术"@zh .
+
+
+
+###  http://ccnt.zju.edu.cn/drugnet/drug#Bitter
+
+:Bitter rdf:type :HerbalTaste ,
+                 owl:NamedIndividual ;
+        
+        rdfs:label "苦"@zh .
+
+
+
+###  http://ccnt.zju.edu.cn/drugnet/drug#Fu_Ling
+
+:Fu_Ling rdf:type :Herb ,
+                  owl:NamedIndividual ;
+         
+         rdfs:label "Fu Ling"@en ,
+                    "茯苓"@zh .
+
+
+
+###  http://ccnt.zju.edu.cn/drugnet/drug#Ginseng
+
+:Ginseng rdf:type :Herb ,
+                  owl:NamedIndividual ;
+         
+         rdfs:label "Ginseng"@en ,
+                    "人参"@zh ;
+         
+         :hasHerbalTaste :Bitter ,
+                         :Sweet .
+
+
+
+###  http://ccnt.zju.edu.cn/drugnet/drug#Glycyrrhizae
+
+:Glycyrrhizae rdf:type :Herb ,
+                       owl:NamedIndividual ;
+              
+              rdfs:label "甘草"@zh .
+
+
+
+###  http://ccnt.zju.edu.cn/drugnet/drug#HS
+
+:HS rdf:type :Herb ,
+             owl:NamedIndividual ;
+    
+    rdfs:label "Huperzia serrata"@en ,
+               "千层塔"@zh ;
+    
+    :containsChemical :HuperzineA .
+
+
+
+###  http://ccnt.zju.edu.cn/drugnet/drug#HuperzineA
+
+:HuperzineA rdf:type :Chemical ,
+                     :Drug ,
+                     owl:NamedIndividual ;
+            
+            rdfs:label "Huperzine A"@en ,
+                       "石杉碱甲"@zh ;
+            
+            rdfs:comment "Huperzine A is a naturally occurring sesquiterpene alkaloid found in the extracts of the firmoss Huperzia serrata."@en ;
+            
+            rdfs:seeAlso <Http://www.catcm.ac.cn/doc/64010> ;
+            
+            rdfs:isDefinedBy <Http://www.catcm.ac.cn/doc/64010> ;
+            
+            :treats p3:AD ,
+                    p3:kidneyYangDeficiency ,
+                    p3:memoryLoss .
+
+
+
+###  http://ccnt.zju.edu.cn/drugnet/drug#Pungent
+
+:Pungent rdf:type :HerbalTaste ,
+                  owl:NamedIndividual ;
+         
+         rdfs:label "辛"@zh .
+
+
+
+###  http://ccnt.zju.edu.cn/drugnet/drug#Salty
+
+:Salty rdf:type :HerbalTaste ,
+                owl:NamedIndividual ;
+       
+       rdfs:label "咸"@zh .
+
+
+
+###  http://ccnt.zju.edu.cn/drugnet/drug#Sour
+
+:Sour rdf:type :HerbalTaste ,
+               owl:NamedIndividual ;
+      
+      rdfs:label "酸"@zh .
+
+
+
+###  http://ccnt.zju.edu.cn/drugnet/drug#Sweet
+
+:Sweet rdf:type :HerbalTaste ,
+                owl:NamedIndividual ;
+       
+       rdfs:label "甜"@zh .
+
+
+
+###  http://ccnt.zju.edu.cn/drugnet/formula#fourGentlemenDecoction
+
+p4:fourGentlemenDecoction rdf:type :Formula ,
+                                   owl:NamedIndividual ;
+                          
+                          rdfs:label "四君子汤"@zh ;
+                          
+                          :treats p3:kidneyYangDeficiency ;
+                          
+                          :hasMinister :Atractylodes ;
+                          
+                          :hasSubordinate :Fu_Ling ;
+                          
+                          :hasKing :Ginseng ;
+                          
+                          :hasMessenger :Glycyrrhizae .
+
+
+
+
+###  Generated by the OWL API (version 3.2.3.1824) http://owlapi.sourceforge.net
+

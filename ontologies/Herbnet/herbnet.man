@@ -1,18 +1,14 @@
-Prefix: j.0: <http://ccnt.zju.edu.cn/drugnet#>
 Prefix: xsd: <http://www.w3.org/2001/XMLSchema#>
 Prefix: owl: <http://www.w3.org/2002/07/owl#>
-Prefix: p3: <http://ccnt.zju.edu.cn/drugnet/clinic#>
-Prefix: p4: <http://ccnt.zju.edu.cn/drugnet/formula#>
-Prefix: : <http://ccnt.zju.edu.cn/drugnet/drug#>
+Prefix: : <http://www.example.com/herbnet#>
 Prefix: xml: <http://www.w3.org/XML/1998/namespace>
 Prefix: rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+Prefix: dc: <http://purl.org/dc/elements/1.1/>
 Prefix: rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-Prefix: p2: <http://ccnt.zju.edu.cn/drugnet/therapy#>
-Prefix: p1: <http://ccnt.zju.edu.cn/drugnet/drug#>
 
 
 
-Ontology: <http://ccnt.zju.edu.cn/drugnet/drug>
+Ontology: <http://www.example.com/herbnet>
 
 
 Annotations: 
@@ -34,43 +30,6 @@ AnnotationProperty: rdfs:comment
 Datatype: rdf:PlainLiteral
 
     
-ObjectProperty: prescribe
-
-    Annotations: 
-        rdfs:label "开处方"@zh
-    
-    Domain: 
-        Therapy
-    
-    Range: 
-        Drug
-    
-    
-ObjectProperty: treats
-
-    Annotations: 
-        rdfs:label "治疗"@zh
-    
-    Domain: 
-        Drug
-         or Therapy
-    
-    Range: 
-        ClinicalCondition
-    
-    
-ObjectProperty: hasMessenger
-
-    SubPropertyOf: 
-        containsHerb
-    
-    
-ObjectProperty: contains
-
-    Annotations: 
-        rdfs:label "包含"@zh
-    
-    
 ObjectProperty: containsChemical
 
     Annotations: 
@@ -86,35 +45,45 @@ ObjectProperty: containsChemical
         Chemical
     
     
+ObjectProperty: has_location
+
+    Annotations: 
+        rdfs:label "的位置是"@zh,
+        rdfs:label "has location"@en
+    
+    SubPropertyOf: 
+        relatedTo
+    
+    
+ObjectProperty: hasKing
+
+    Annotations: 
+        rdfs:label "的君药是"@zh
+    
+    SubPropertyOf: 
+        containsHerb
+    
+    
+ObjectProperty: hasMessenger
+
+    Annotations: 
+        rdfs:label "的使药是"@zh
+    
+    SubPropertyOf: 
+        containsHerb
+    
+    
 ObjectProperty: broaderTransitive
 
     Annotations: 
         rdfs:label "传递性的广义概念"@zh
     
     
-ObjectProperty: hasKing
-
-    SubPropertyOf: 
-        containsHerb
-    
-    
-ObjectProperty: relatedTo
+ObjectProperty: hasMinister
 
     Annotations: 
-        rdfs:label "相关"@zh
+        rdfs:label "的臣药是"@zh
     
-    Characteristics: 
-        Symmetric
-    
-    Domain: 
-        ClinicalCondition
-    
-    Range: 
-        ClinicalCondition
-    
-    
-ObjectProperty: hasSubordinate
-
     SubPropertyOf: 
         containsHerb
     
@@ -134,16 +103,13 @@ ObjectProperty: containsHerb
         Herb
     
     
-ObjectProperty: hasMinister
-
-    SubPropertyOf: 
-        containsHerb
-    
-    
 ObjectProperty: hasHerbalTaste
 
     Annotations: 
         rdfs:label "具有药味"@zh
+    
+    SubPropertyOf: 
+        relatedTo
     
     Domain: 
         Herb
@@ -152,10 +118,74 @@ ObjectProperty: hasHerbalTaste
         HerbalTaste
     
     
+ObjectProperty: hasSubordinate
+
+    Annotations: 
+        rdfs:label "的佐药是"@zh
+    
+    SubPropertyOf: 
+        containsHerb
+    
+    
+ObjectProperty: relatedTo
+
+    Annotations: 
+        rdfs:label "相关"@zh
+    
+    Characteristics: 
+        Symmetric
+    
+    Domain: 
+        ClinicalCondition
+    
+    Range: 
+        ClinicalCondition
+    
+    
 ObjectProperty: narrowerTransitive
 
     Annotations: 
         rdfs:label "传递性的狭义概念"@zh
+    
+    
+ObjectProperty: contains
+
+    Annotations: 
+        rdfs:label "包含"@zh
+    
+    SubPropertyOf: 
+        relatedTo
+    
+    
+ObjectProperty: treats
+
+    Annotations: 
+        rdfs:label "治疗"@zh
+    
+    SubPropertyOf: 
+        relatedTo
+    
+    Domain: 
+        Drug
+         or Therapy
+    
+    Range: 
+        ClinicalCondition
+    
+    
+ObjectProperty: prescribe
+
+    Annotations: 
+        rdfs:label "开处方"@zh
+    
+    SubPropertyOf: 
+        relatedTo
+    
+    Domain: 
+        Therapy
+    
+    Range: 
+        Drug
     
     
 Class: FiveHerbalTaste
@@ -170,10 +200,25 @@ Class: FiveHerbalTaste
         HerbalTaste
     
     
-Class: HerbalTaste
+Class: Herb
 
     Annotations: 
-        rdfs:label "药味"@zh
+        rdfs:label "中药"@zh,
+        rdfs:comment "Herbal medicines include herbs, herbal materials, herbal preparations and finished herbal products, that contain as active ingredients parts of plants, or other plant materials, or combinations thereof."@en,
+        rdfs:comment "草药包括含有植物、植物原料或其组合等活性成分的药草、药草原料、药草制剂及药草成本."@zh,
+        rdfs:label "Herb"@en
+    
+    SubClassOf: 
+        Drug
+    
+    
+Class: Therapy
+
+    Annotations: 
+        rdfs:comment "疗法是指用于解决健康问题的方法."@zh,
+        rdfs:label "therapy"@en,
+        rdfs:comment "Therapy, or treatment, is the attempted remediation of a health problem."@en,
+        rdfs:label "疗法"@zh
     
     
 Class: Chemical
@@ -185,11 +230,22 @@ Class: Chemical
         rdfs:comment "A substance with a distinct molecular composition that is produced by or used in a chemical process."@en
     
     
-Class: ClinicalCondition
+Class: Viscera
 
     Annotations: 
-        rdfs:label "clinical condition"@en,
-        rdfs:label "临床状况"@zh
+        rdfs:label "脏"@zh
+    
+    SubClassOf: 
+        TCM_Human_Organ
+    
+    
+Class: bowel
+
+    Annotations: 
+        rdfs:label "腑"@zh
+    
+    SubClassOf: 
+        TCM_Human_Organ
     
     
 Class: Disease
@@ -202,13 +258,55 @@ Class: Disease
         ClinicalCondition
     
     
-Class: Therapy
+Class: ClinicalCondition
 
     Annotations: 
-        rdfs:comment "疗法是指用于解决健康问题的方法."@zh,
-        rdfs:label "therapy"@en,
-        rdfs:comment "Therapy, or treatment, is the attempted remediation of a health problem."@en,
-        rdfs:label "疗法"@zh
+        rdfs:label "clinical condition"@en,
+        rdfs:label "临床状况"@zh
+    
+    
+Class: Formula
+
+    Annotations: 
+        rdfs:comment "Formula refers to herbal formula in TCM domain, which is prescriptions as mixtures of multiple herbs."@en,
+        rdfs:label "Formula"@en,
+        rdfs:comment "方剂指由若干中草药混合而成的处方."@zh,
+        rdfs:label "方剂"@zh
+    
+    SubClassOf: 
+        Drug
+    
+    
+Class: Drug
+
+    Annotations: 
+        rdfs:label "Drug"@en,
+        rdfs:comment "用于诊断, 治愈, 移除, 治疗, 或预防疾病的物质."@zh,
+        rdfs:label "药物"@zh,
+        rdfs:comment "A substance intended for use in the diagnosis, cure, mitigation, treatment, or prevention of disease."@en
+    
+    
+Class: HerbalTaste
+
+    Annotations: 
+        rdfs:label "药味"@zh
+    
+    
+Class: TCM_Human_Organ
+
+    Annotations: 
+        rdfs:label "中医人体器官"@zh,
+        rdfs:label "TCM Human Organ"@en
+    
+    
+Class: Symptom
+
+    Annotations: 
+        rdfs:label "Symptom"@en,
+        rdfs:label "症状"@zh
+    
+    SubClassOf: 
+        ClinicalCondition
     
     
 Class: Syndrome
@@ -223,47 +321,103 @@ Class: Syndrome
         ClinicalCondition
     
     
-Class: Drug
+Individual: Glycyrrhizae
 
     Annotations: 
-        rdfs:label "Drug"@en,
-        rdfs:comment "用于诊断, 治愈, 移除, 治疗, 或预防疾病的物质."@zh,
-        rdfs:label "药物"@zh,
-        rdfs:comment "A substance intended for use in the diagnosis, cure, mitigation, treatment, or prevention of disease."@en
+        rdfs:label "甘草"@zh
+    
+    Types: 
+        Herb
     
     
-Class: Symptom
+Individual: Atractylodes
 
     Annotations: 
-        rdfs:label "Symptom"@en,
-        rdfs:label "症状"@zh
+        rdfs:label "白术"@zh
     
-    SubClassOf: 
+    Types: 
+        Herb
+    
+    
+Individual: kidneyDeficiency
+
+    Annotations: 
+        rdfs:label "Kideny Deficiency"@en,
+        rdfs:label "肾虚证"@zh
+    
+    Types: 
+        Syndrome
+    
+    Facts:  
+     has_location  kidney
+    
+    
+Individual: Pungent
+
+    Annotations: 
+        rdfs:label "辛"@zh
+    
+    Types: 
+        HerbalTaste
+    
+    
+Individual: pregnancy
+
+    Annotations: 
+        rdfs:label "怀孕"@zh,
+        rdfs:label "pregnancy"@en
+    
+    Types: 
         ClinicalCondition
     
     
-Class: Herb
+Individual: yangDeficiency
 
     Annotations: 
-        rdfs:label "中药"@zh,
-        rdfs:comment "Herbal medicines include herbs, herbal materials, herbal preparations and finished herbal products, that contain as active ingredients parts of plants, or other plant materials, or combinations thereof."@en,
-        rdfs:label "Herb"@en,
-        rdfs:comment "草药包括含有植物、植物原料或其组合等活性成分的药草、药草原料、药草制剂及药草成本."@zh
+        rdfs:label "阳虚证"@zh,
+        rdfs:label "Yang Deficiency"@en
     
-    SubClassOf: 
-        Drug
+    Types: 
+        Syndrome
     
     
-Class: Formula
+Individual: memoryLoss
 
     Annotations: 
-        rdfs:comment "Formula refers to herbal formula in TCM domain, which is prescriptions as mixtures of multiple herbs."@en,
-        rdfs:label "Formula"@en,
-        rdfs:comment "方剂指由若干中草药混合而成的处方."@zh,
-        rdfs:label "方剂"@zh
+        rdfs:label "记忆减退"@zh,
+        rdfs:label "Memory Loss"@en
     
-    SubClassOf: 
-        Drug
+    Types: 
+        Symptom
+    
+    Facts:  
+     relatedTo  kidneyYangDeficiency
+    
+    
+Individual: Fu_Ling
+
+    Annotations: 
+        rdfs:label "Fu Ling"@en,
+        rdfs:label "茯苓"@zh
+    
+    Types: 
+        Herb
+    
+    
+Individual: fourGentlemenDecoction
+
+    Annotations: 
+        rdfs:label "四君子汤"@zh
+    
+    Types: 
+        Formula
+    
+    Facts:  
+     hasKing  Ginseng,
+     hasMinister  Atractylodes,
+     treats  kidneyYangDeficiency,
+     hasSubordinate  Fu_Ling,
+     hasMessenger  Glycyrrhizae
     
     
 Individual: HS
@@ -279,91 +433,6 @@ Individual: HS
      containsChemical  HuperzineA
     
     
-Individual: Bitter
-
-    Annotations: 
-        rdfs:label "苦"@zh
-    
-    Types: 
-        HerbalTaste
-    
-    
-Individual: p3:AD
-
-    Annotations: 
-        rdfs:comment "以渐进性痴呆为特征的人类退化性紊乱."@zh,
-        rdfs:comment "A human degenerative disorder characterized by progressive dementia."@en,
-        rdfs:label "阿尔茨海默症"@zh,
-        rdfs:label "Alzheimer's Disease"@en
-    
-    Types: 
-        Disease
-    
-    
-Individual: Pungent
-
-    Annotations: 
-        rdfs:label "辛"@zh
-    
-    Types: 
-        HerbalTaste
-    
-    
-Individual: Atractylodes
-
-    Annotations: 
-        rdfs:label "白术"@zh
-    
-    Types: 
-        Herb
-    
-    
-Individual: Fu_Ling
-
-    Annotations: 
-        rdfs:label "Fu Ling"@en,
-        rdfs:label "茯苓"@zh
-    
-    Types: 
-        Herb
-    
-    
-Individual: p3:yangDeficiency
-
-    Annotations: 
-        rdfs:label "阳虚证"@zh,
-        rdfs:label "Yang Deficiency"@en
-    
-    Types: 
-        Syndrome
-    
-    
-Individual: p4:fourGentlemenDecoction
-
-    Annotations: 
-        rdfs:label "四君子汤"@zh
-    
-    Types: 
-        Formula
-    
-    Facts:  
-     hasSubordinate  Fu_Ling,
-     hasMessenger  Glycyrrhizae,
-     treats  p3:kidneyYangDeficiency,
-     hasMinister  Atractylodes,
-     hasKing  Ginseng
-    
-    
-Individual: p3:pregnancy
-
-    Annotations: 
-        rdfs:label "怀孕"@zh,
-        rdfs:label "pregnancy"@en
-    
-    Types: 
-        ClinicalCondition
-    
-    
 Individual: HuperzineA
 
     Annotations: 
@@ -374,45 +443,13 @@ Individual: HuperzineA
         rdfs:comment "Huperzine A is a naturally occurring sesquiterpene alkaloid found in the extracts of the firmoss Huperzia serrata."@en
     
     Types: 
-        Chemical,
-        Drug
+        Drug,
+        Chemical
     
     Facts:  
-     treats  p3:kidneyYangDeficiency,
-     treats  p3:AD,
-     treats  p3:memoryLoss
-    
-    
-Individual: p3:memoryLoss
-
-    Annotations: 
-        rdfs:label "记忆减退"@zh,
-        rdfs:label "Memory Loss"@en
-    
-    Types: 
-        Symptom
-    
-    Facts:  
-     relatedTo  p3:kidneyYangDeficiency
-    
-    
-Individual: Salty
-
-    Annotations: 
-        rdfs:label "咸"@zh
-    
-    Types: 
-        HerbalTaste
-    
-    
-Individual: p3:kidneyDeficiency
-
-    Annotations: 
-        rdfs:label "Kideny Deficiency"@en,
-        rdfs:label "肾虚证"@zh
-    
-    Types: 
-        Syndrome
+     treats  memoryLoss,
+     treats  AD,
+     treats  kidneyYangDeficiency
     
     
 Individual: Ginseng
@@ -425,8 +462,9 @@ Individual: Ginseng
         Herb
     
     Facts:  
+     hasHerbalTaste  Sweet,
      hasHerbalTaste  Bitter,
-     hasHerbalTaste  Sweet
+     treats  deficiency
     
     
 Individual: Sweet
@@ -438,34 +476,7 @@ Individual: Sweet
         HerbalTaste
     
     
-Individual: Glycyrrhizae
-
-    Annotations: 
-        rdfs:label "甘草"@zh
-    
-    Types: 
-        Herb
-    
-    
-Individual: p3:kidneyYangDeficiency
-
-    Annotations: 
-        rdfs:label "Kideny Yang Deficiency"@en,
-        rdfs:label "肾阳虚证"@zh
-    
-    Types: 
-        Syndrome
-    
-    Facts:  
-     relatedTo  p3:AD,
-     narrowerTransitive  p3:yangDeficiency,
-     narrowerTransitive  p3:deficiency,
-     relatedTo  p3:memoryLoss,
-     relatedTo  p3:pregnancy,
-     narrowerTransitive  p3:kidneyDeficiency
-    
-    
-Individual: p3:deficiency
+Individual: deficiency
 
     Annotations: 
         rdfs:label "虚证"@zh,
@@ -475,9 +486,9 @@ Individual: p3:deficiency
         Syndrome
     
     Facts:  
-     broaderTransitive  p3:kidneyYangDeficiency,
-     broaderTransitive  p3:kidneyDeficiency,
-     broaderTransitive  p3:yangDeficiency
+     broaderTransitive  kidneyYangDeficiency,
+     broaderTransitive  kidneyDeficiency,
+     broaderTransitive  yangDeficiency
     
     
 Individual: Sour
@@ -487,5 +498,63 @@ Individual: Sour
     
     Types: 
         HerbalTaste
+    
+    
+Individual: kidneyYangDeficiency
+
+    Annotations: 
+        rdfs:label "肾阳虚证"@zh,
+        rdfs:label "Kideny Yang Deficiency"@en
+    
+    Types: 
+        Syndrome
+    
+    Facts:  
+     relatedTo  AD,
+     narrowerTransitive  deficiency,
+     narrowerTransitive  kidneyDeficiency,
+     relatedTo  pregnancy,
+     narrowerTransitive  yangDeficiency,
+     relatedTo  memoryLoss
+    
+    
+Individual: Bitter
+
+    Annotations: 
+        rdfs:label "苦"@zh
+    
+    Types: 
+        HerbalTaste
+    
+    
+Individual: Salty
+
+    Annotations: 
+        rdfs:label "咸"@zh
+    
+    Types: 
+        HerbalTaste
+    
+    
+Individual: AD
+
+    Annotations: 
+        rdfs:comment "以渐进性痴呆为特征的人类退化性紊乱."@zh,
+        rdfs:comment "A human degenerative disorder characterized by progressive dementia."@en,
+        rdfs:label "阿尔茨海默症"@zh,
+        rdfs:label "Alzheimer's Disease"@en
+    
+    Types: 
+        Disease
+    
+    
+Individual: kidney
+
+    Annotations: 
+        rdfs:label "肾"@zh,
+        rdfs:label "kidney"@en
+    
+    Types: 
+        Viscera
     
     

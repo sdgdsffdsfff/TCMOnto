@@ -1,0 +1,1503 @@
+Prefix: xsd: <http://www.w3.org/2001/XMLSchema#>
+Prefix: owl: <http://www.w3.org/2002/07/owl#>
+Prefix: : <http://www.example.com/>
+Prefix: xml: <http://www.w3.org/XML/1998/namespace>
+Prefix: rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+Prefix: dc: <http://purl.org/dc/elements/1.1/>
+Prefix: www: <http://www.example.com/>
+Prefix: rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+
+
+Ontology: <http://www.example.com/>
+
+
+Annotations: 
+    rdfs:comment "中医药领域本体示例。"@zh,
+    rdfs:comment "An example of OWL ontology for Traditional Chinese Medicine domain."@en
+
+AnnotationProperty: rdfs:seeAlso
+
+    
+AnnotationProperty: rdfs:isDefinedBy
+
+    
+AnnotationProperty: rdfs:label
+
+    
+AnnotationProperty: rdfs:comment
+
+    
+Datatype: rdf:PlainLiteral
+
+    
+ObjectProperty: owl:topObjectProperty
+
+    
+ObjectProperty: 包含
+
+    Annotations: 
+        rdfs:comment "包含"@zh,
+        rdfs:label "包含"@zh,
+        rdfs:label "contains"@en
+    
+    SubPropertyOf: 
+        相关关系
+    
+    
+ObjectProperty: 传递性上位概念
+
+    Annotations: 
+        rdfs:label "broaderTransitive"@en,
+        rdfs:label "传递性上位概念"@zh
+    
+    
+ObjectProperty: 包含中草药
+
+    Annotations: 
+        rdfs:label "contains herb"@en,
+        rdfs:label "包含中草药"@zh
+    
+    SubPropertyOf: 
+        包含
+    
+    Domain: 
+        方剂
+    
+    Range: 
+        中药
+    
+    
+ObjectProperty: 滋养
+
+    Annotations: 
+        rdfs:label "nourishes"@en,
+        rdfs:label "滋养"@zh
+    
+    SubPropertyOf: 
+        生
+    
+    
+ObjectProperty: 影响
+
+    Annotations: 
+        rdfs:label "affects"@en,
+        rdfs:label "影响"@zh
+    
+    
+ObjectProperty: 君药
+
+    Annotations: 
+        rdfs:label "has king"@en,
+        rdfs:label "君药"@zh
+    
+    SubPropertyOf: 
+        包含中草药
+    
+    
+ObjectProperty: 相关关系
+
+    Annotations: 
+        rdfs:label "relatedTo"@en,
+        rdfs:label "相关关系"@zh
+    
+    Characteristics: 
+        Symmetric
+    
+    Domain: 
+        临床状况
+    
+    Range: 
+        临床状况
+    
+    
+ObjectProperty: 传递性下位概念
+
+    Annotations: 
+        rdfs:label "narrowerTransitive"@en,
+        rdfs:label "传递性下位概念"@zh
+    
+    
+ObjectProperty: 治疗
+
+    Annotations: 
+        rdfs:label "treats"@en,
+        rdfs:label "治疗"@zh
+    
+    SubPropertyOf: 
+        相关关系
+    
+    Domain: 
+        治法
+         or 药用物质
+    
+    Range: 
+        临床状况
+    
+    
+ObjectProperty: 臣药
+
+    Annotations: 
+        rdfs:label "has minister"@en,
+        rdfs:label "臣药"@zh
+    
+    SubPropertyOf: 
+        包含中草药
+    
+    
+ObjectProperty: 生
+
+    Annotations: 
+        rdfs:label "engenders"@en,
+        rdfs:label "生"@zh
+    
+    SubPropertyOf: 
+        影响
+    
+    
+ObjectProperty: 使药
+
+    Annotations: 
+        rdfs:label "使药"@zh,
+        rdfs:label "has messenger"@en
+    
+    SubPropertyOf: 
+        包含中草药
+    
+    
+ObjectProperty: 包含化学物质
+
+    Annotations: 
+        rdfs:label "包含化学物质"@zh,
+        rdfs:label "contains chemical"@en
+    
+    SubPropertyOf: 
+        包含
+    
+    Domain: 
+        中药
+    
+    Range: 
+        化学物质
+    
+    
+ObjectProperty: 使用
+
+    Annotations: 
+        rdfs:label "使用"@zh,
+        rdfs:label "uses"@en
+    
+    
+ObjectProperty: 开处方
+
+    Annotations: 
+        rdfs:label "开处方"@zh,
+        rdfs:label "prescribes"@en
+    
+    SubPropertyOf: 
+        相关关系
+    
+    Domain: 
+        治法
+    
+    Range: 
+        药用物质
+    
+    
+ObjectProperty: 有药味
+
+    Annotations: 
+        rdfs:label "has herbal taste"@en,
+        rdfs:label "具有药味"@zh
+    
+    SubPropertyOf: 
+        相关关系
+    
+    Domain: 
+        中药
+    
+    Range: 
+        四气五味
+    
+    
+ObjectProperty: 佐药
+
+    Annotations: 
+        rdfs:label "佐药"@zh,
+        rdfs:label "has subordinate"@en
+    
+    SubPropertyOf: 
+        包含中草药
+    
+    
+ObjectProperty: 的病位是
+
+    Annotations: 
+        rdfs:label "has location"@en,
+        rdfs:label "的病位是"@zh
+    
+    SubPropertyOf: 
+        相关关系
+    
+    
+Class: 五行
+
+    Annotations: 
+        rdfs:label "五行"@zh,
+        rdfs:label "five phases"@en
+    
+    SubClassOf: 
+        五行理论
+    
+    
+Class: 植物
+
+    SubClassOf: 
+        实体
+    
+    
+Class: 化学物质
+
+    Annotations: 
+        rdfs:label "Chemical"@en,
+        rdfs:label "化学物质"@zh,
+        rdfs:comment "具有特定的分子组成，并作为化学过程的参与者或产物的物质."@zh,
+        rdfs:comment "A substance with a distinct molecular composition that is produced by or used in a chemical process."@en
+    
+    SubClassOf: 
+        实体
+    
+    
+Class: 药用动物植物矿物
+
+    Annotations: 
+        rdfs:label "Medicinal animal plant and mineral"@en,
+        rdfs:comment "Generally refers to all animals, plants and minerals that can be used as drugs."@en,
+        rdfs:label "药用动物、植物和矿物质"@zh
+    
+    SubClassOf: 
+        物理和具象实体
+    
+    
+Class: 事件
+
+    Annotations: 
+        rdfs:label "A broad type for grouping activities, processes and states.(UMLS)"@zh,
+        rdfs:label "事件"@zh,
+        rdfs:label "Event"@en
+    
+    
+Class: 临床状况
+
+    Annotations: 
+        rdfs:label "clinical finding"@en,
+        rdfs:label "临床发现"@zh
+    
+    SubClassOf: 
+        病因病机疾病
+    
+    
+Class: 五味
+
+    Annotations: 
+        rdfs:label "五味"@zh,
+        rdfs:label "five herbal taste"@en
+    
+    EquivalentTo: 
+        {咸 , 甜 , 苦 , 辛 , 酸}
+    
+    SubClassOf: 
+        四气五味
+    
+    
+Class: 精
+
+    Annotations: 
+        rdfs:label "精"@zh,
+        rdfs:label "Essence"@en,
+        rdfs:comment "Essence means two things: (1) the fundamental substance that builds up the physical structure and maintains body function; (2) reproductive essence stored in the kidney."@en
+    
+    SubClassOf: 
+        人体基本物质
+    
+    
+Class: 六腑
+
+    SubClassOf: 
+        腑
+    
+    
+Class: 中医人体基础
+
+    Annotations: 
+        rdfs:label "Basic material in the human body in Chinese medicine"@en,
+        rdfs:comment "In Chinese medicine, the basic elements, constituents, or substances of which the human body is composed or can be made according to TCM theory."@en,
+        rdfs:label "中医人体基础"@zh
+    
+    SubClassOf: 
+        物理和具象实体
+    
+    
+Class: 草药
+
+    Annotations: 
+        rdfs:label "草药"@zh,
+        rdfs:comment "Herbal medicines include herbs, herbal materials, herbal preparations and finished herbal products, that contain as active ingredients parts of plants, or other plant materials, or combinations thereof."@en,
+        rdfs:comment "草药包括含有植物、植物原料或其组合等活性成分的药草、药草原料、药草制剂及药草成本."@zh,
+        rdfs:label "Herb"@en
+    
+    SubClassOf: 
+        药用物质
+    
+    
+Class: 药用动物
+
+    Annotations: 
+        rdfs:comment "Generally refers to those animals that have health function or can be used to prevent and treat the disease."@zh,
+        rdfs:comment "Medicinal animal"@en,
+        rdfs:comment "药用动物"@zh
+    
+    SubClassOf: 
+        药用动物植物矿物
+    
+    
+Class: 症状体征
+
+    Annotations: 
+        rdfs:label "症状体征"@zh,
+        rdfs:comment "A (bodily or mental) phenomenon, circumstance, or change of condition arising from and accompanying a disease or other pathological condition, and constituting an indication or evidence of it; a characteristic sign of a particular disease. Especially, in modern use, a subjective indication, perceptible to the patient."@en,
+        rdfs:label "Symptom & sign"@en
+    
+    SubClassOf: 
+        病因病机疾病
+    
+    
+Class: 中医理论
+
+    Annotations: 
+        rdfs:label "Traditional Chinese medicine theory"@en,
+        rdfs:comment "In Chinese medicine, a system of ideas formed from Chinese medical philosophy in combination with practical experiences on medicine, such as yin-yang theory, visceral manifestation theory, meridian and collateral theory, essential qi theory, and five-phase theory."@en,
+        rdfs:label "中医理论"@zh
+    
+    SubClassOf: 
+        概念实体
+    
+    
+Class: 实体
+
+    Annotations: 
+        rdfs:comment "A broad type for grouping physical and conceptual entities."@zh,
+        rdfs:label "Entity"@en,
+        rdfs:label "实体"@zh
+    
+    
+Class: 功能性人体系统
+
+    Annotations: 
+        rdfs:label "功能性人体系统"@zh,
+        rdfs:label "Functional body system"@en
+    
+    SubClassOf: 
+        中医人体基础
+    
+    
+Class: 药性
+
+    Annotations: 
+        rdfs:label "Nature of Chinese medicinals"@en,
+        rdfs:label "药性"@zh,
+        rdfs:comment "The basic properties of a medicinal mainly includes four qi, five flavors, meridian entry, upbearing, downbearing, floating, sinking, toxin, etc."@en
+    
+    SubClassOf: 
+        中药属性和功能
+    
+    
+Class: 气
+
+    Annotations: 
+        rdfs:label "Qi"@en,
+        rdfs:comment "The basic element that constitutes the cosmos and, through its movements, changes and transformations, produces everything in the world, including the human body and life activities. In the field of medicine, qi refers both to the refined nutritive substance that flows within the human body as well as to its functional activities."@en,
+        rdfs:label "气"@zh
+    
+    SubClassOf: 
+        人体基本物质
+    
+    
+Class: 听气息
+
+    Annotations: 
+        rdfs:label "听气息"@zh,
+        rdfs:label "Listening Sounds of Breathing"@zh
+    
+    SubClassOf: 
+        闻诊
+    
+    
+Class: 四气五味
+
+    Annotations: 
+        rdfs:label "Four qi and five flavors"@en,
+        rdfs:label "四气五味"@zh,
+        rdfs:comment "A collective term of four qi and five flavors. The four basic properties of medicinals, cold, hot, warmth, and coolness. The five tastes of medicinals, pungency, sweetness, sourness, bitterness, and saltiness, representing the basic actions of the medicinals."@en
+    
+    SubClassOf: 
+        药性
+    
+    
+Class: 治法
+
+    Annotations: 
+        rdfs:label "therapy"@en,
+        rdfs:label "治法"@zh,
+        rdfs:comment "Therapy, or treatment, is the attempted remediation of a health problem. Any specific intervention derived from a principle of treatment, e.g. diaphoresis, emesis, purgation, mediation, warming, clearing, tonification and resolution."@en
+    
+    SubClassOf: 
+        中医治疗
+    
+    
+Class: 疾病
+
+    Annotations: 
+        rdfs:comment "Study of disease process through basic theory of TCM."@en,
+        rdfs:label "Disease"@en,
+        rdfs:label "疾病"@zh
+    
+    SubClassOf: 
+        病因病机疾病
+    
+    
+Class: 现象与过程
+
+    Annotations: 
+        rdfs:label "现象与过程"@zh,
+        rdfs:label "Phenomenon and process"@en,
+        rdfs:label "A process or state which occurs naturally or as a result of an activity. (UMLS)"@en
+    
+    SubClassOf: 
+        事件
+    
+    
+Class: 功效
+
+    Annotations: 
+        rdfs:comment "Refers to the effect that Chinese medicinal produced on the body."@en,
+        rdfs:label "The function of Chinese medicinal"@en,
+        rdfs:label "功效"@zh
+    
+    SubClassOf: 
+        中药属性和功能
+    
+    
+Class: 中医文献
+
+    Annotations: 
+        rdfs:comment "The body of written works (e.g., books, magazines) on the subject of traditional Chinese medicine."@en,
+        rdfs:label "中医文献"@zh,
+        rdfs:label "Traditional Chinese medicine literature"@en
+    
+    SubClassOf: 
+        概念实体
+    
+    
+Class: 切诊
+
+    Annotations: 
+        rdfs:label "切诊"@zh,
+        rdfs:label "palpation"@en
+    
+    SubClassOf: 
+        诊法
+    
+    
+Class: 脏
+
+    Annotations: 
+        rdfs:label "Viscus"@zh,
+        rdfs:label "脏"@zh
+    
+    SubClassOf: 
+        脏腑
+    
+    
+Class: 中医药学科
+
+    Annotations: 
+        rdfs:comment "A subject that originated in China evolved a unique theoretical system, which is based on the Chinese people’s long-term medical practice."@en,
+        rdfs:label "Traditional Chinese medicine subject"@en,
+        rdfs:label "中医学科"@zh
+    
+    SubClassOf: 
+        概念实体
+    
+    
+Class: 形体关窍
+
+    Annotations: 
+        rdfs:comment "A collective term for skin, vessels, flesh, sinews, bones and the external opening of sense organs."@en,
+        rdfs:label "Body constituent and orifice of sense organ"@en,
+        rdfs:label "形体关窍"@zh
+    
+    SubClassOf: 
+        中医人体基础
+    
+    
+Class: 经络
+
+    Annotations: 
+        rdfs:comment "A system of conduits through which qi and blood circulate, connecting the bowels, viscera, extremities, superficial organs and tissues, making the body an organic whole, the same as channels and networks; meridians or channels, in short."@en,
+        rdfs:comment "Meridian and collateral"@en,
+        rdfs:comment "经络"@zh
+    
+    SubClassOf: 
+        功能性人体系统
+    
+    
+Class: 中医各家
+
+    Annotations: 
+        rdfs:label "Traditional Chinese Medicine Schools"@en,
+        rdfs:label "中医各家"@zh,
+        rdfs:comment "The prolonged history of traditional Chinese medicine has witnessed a plurality of famous figures, who not only inherited theories and experiences from their antecessors, but also formed their own opinions and doctrines.
+The inheritance of academic tradition, achieved through apprenticeship training, in addition to the creativity of famous figures recognized for their outstanding works, gave rise to the different schools of traditional Chinese medicine.
+"@en
+    
+    SubClassOf: 
+        各家学说
+    
+    
+Class: 病因病机疾病
+
+    Annotations: 
+        rdfs:label "Etiology, pathogenesis and disease"@en,
+        rdfs:comment "Study of the etiology, development and mechanism of disease according to TCM theory."@en,
+        rdfs:label "病因病机疾病"@zh
+    
+    SubClassOf: 
+        现象与过程
+    
+    
+Class: 诊法
+
+    Annotations: 
+        rdfs:comment "The basic method of collecting data to determine the disease condition."@en,
+        rdfs:label "诊法"@zh,
+        rdfs:label "Diagnostic method"@en
+    
+    SubClassOf: 
+        中医诊断
+    
+    
+Class: 按摩
+
+    Annotations: 
+        rdfs:label "按摩"@zh,
+        rdfs:label "Massage"@en,
+        rdfs:label "Rubbing, kneading, or percussion of the soft tissues and joints of the body with the hands, usually performed by one person on another, esp. to relieve tension or pain."@en
+    
+    SubClassOf: 
+        治法
+    
+    
+Class: 气功疗法
+
+    Annotations: 
+        rdfs:comment "Qigong is a therapeutic method used to prevent and cure disease by means of bringing the subjective initiative of the patient into full play."@en,
+        rdfs:label "Qigong therapy"@en,
+        rdfs:label "气功疗法"@zh
+    
+    SubClassOf: 
+        治法
+    
+    
+Class: 概念实体
+
+    Annotations: 
+        rdfs:label "概念实体"@zh,
+        rdfs:comment "A broad type for grouping abstract entities or concepts."@en,
+        rdfs:label "Conceptual entity"@en
+    
+    SubClassOf: 
+        实体
+    
+    
+Class: 中医心理
+
+    Annotations: 
+        rdfs:comment "Study of human psychological state according to TCM Theory."@en,
+        rdfs:label "Traditional Chinese medicine psychology"@en,
+        rdfs:label "中医心理"@zh
+    
+    SubClassOf: 
+        生理现象与过程
+    
+    
+Class: 辨证
+
+    Annotations: 
+        rdfs:label "辨证"@zh,
+        rdfs:label "Syndrome differentiation"@en,
+        rdfs:comment "The process of overall analysis of clinical data to determine the location, cause and nature of a patient’s disease and achieving a diagnosis of a pattern/syndrome, also called pattern differentiation."@en
+    
+    SubClassOf: 
+        中医诊断
+    
+    
+Class: 人体基本物质
+
+    Annotations: 
+        rdfs:comment "Basic substance in the human body"@en,
+        rdfs:comment "人体基本物质"@zh
+    
+    SubClassOf: 
+        中医人体基础
+    
+    
+Class: 归经
+
+    Annotations: 
+        rdfs:label "归经"@zh,
+        rdfs:comment "Orientation of the medicinal action according to the meridian/channel on which the therapeutic action is manifested, also called meridian tropism."@en,
+        rdfs:label "Meridian entry"@en
+    
+    SubClassOf: 
+        药性
+    
+    
+Class: 中医相关学科
+
+    Annotations: 
+        rdfs:label "Related subjects of traditional Chinese medicine"@en,
+        rdfs:label "中医相关学科"@zh,
+        rdfs:comment "Referring to a subject that is connected to Traditional Chinese Medicine."@en
+    
+    SubClassOf: 
+        概念实体
+    
+    
+Class: 各家学说
+
+    Annotations: 
+        rdfs:label "各家学说"@zh,
+        rdfs:label "Theories of schools of traditional Chinese medicine"@en,
+        rdfs:comment "Refers to a TCM theory that is from various factions."@en
+    
+    SubClassOf: 
+        中医理论
+    
+    
+Class: 听声音
+
+    Annotations: 
+        rdfs:label "听声音"@zh,
+        rdfs:label "listening examination"@en
+    
+    SubClassOf: 
+        闻诊
+    
+    
+Class: 中医治疗
+
+    Annotations: 
+        rdfs:label "Traditional Chinese medicine treatment"@en,
+        rdfs:label "中医治疗"@zh,
+        rdfs:comment "Treat the disease with the idea and method of syndrome differentiation and treatment."@en
+    
+    SubClassOf: 
+        活动
+    
+    
+Class: 闻气味
+
+    Annotations: 
+        rdfs:label "闻气味"@zh,
+        rdfs:label "smelling examination"@en
+    
+    SubClassOf: 
+        闻诊
+    
+    
+Class: 中药疗法
+
+    Annotations: 
+        rdfs:comment "Under the guidance of the basic TCM theory, prescribe Chinese medicinal to treat the disease."@en,
+        rdfs:label "Chinese medicinal therapy"@en,
+        rdfs:label "中药疗法"@zh
+    
+    SubClassOf: 
+        治法
+    
+    
+Class: Constitution
+
+    Annotations: 
+        rdfs:label "Constitution"@en,
+        rdfs:comment "The characteristics of an individual, including structural and functional characteristics, temperament, adaptability to environmental changes and susceptibility to disease. It is relatively stable, being in part, genetically determined and in part, acquired."@en,
+        rdfs:label "体质"@zh
+    
+    SubClassOf: 
+        中医人体基础
+    
+    
+Class: 药用物质
+
+    Annotations: 
+        rdfs:comment "用于诊断, 治愈, 移除, 治疗, 或预防疾病的物质."@zh,
+        rdfs:label "Medicinal substance"@en,
+        rdfs:comment "A substance intended for use in the diagnosis, cure, mitigation, treatment, or prevention of disease. This includes substances that occur naturally in the body and are administered therapeutically."@en,
+        rdfs:label "药用物质"@zh
+    
+    SubClassOf: 
+        物理和具象实体
+    
+    
+Class: 中医团体
+
+    Annotations: 
+        rdfs:label "A social group organized for some end or tasks related to health care, education, and scientific research in traditional Chinese medicine."@zh,
+        rdfs:label "Traditional Chinese medicine organization"@en,
+        rdfs:label "中医团体"@zh
+    
+    SubClassOf: 
+        概念实体
+    
+    
+Class: 腧穴
+
+    Annotations: 
+        rdfs:label "腧穴"@zh,
+        rdfs:label "Acupuncture point"@en,
+        rdfs:comment "The point where a needle is inserted and manipulated in acupuncture therapy."@en
+    
+    SubClassOf: 
+        功能性人体系统
+    
+    
+Class: 治则
+
+    Annotations: 
+        rdfs:comment "A general rule that should be followed in treating disease."@en,
+        rdfs:label "Therapeutic principle"@en,
+        rdfs:label "治则"@zh
+    
+    SubClassOf: 
+        中医治疗
+    
+    
+Class: 五脏
+
+    Annotations: 
+        rdfs:label "five viscera"@en,
+        rdfs:label "五脏"@zh
+    
+    EquivalentTo: 
+        {心 , 肝 , 肺 , 肾 , 脾}
+    
+    SubClassOf: 
+        脏
+    
+    
+Class: 津液
+
+    Annotations: 
+        rdfs:label "Liquid and humor"@en,
+        rdfs:label "津液"@zh,
+        rdfs:comment "A general term for all kinds of normal liquid in the body, except the blood, also known as body liquids."@en
+    
+    SubClassOf: 
+        人体基本物质
+    
+    
+Class: 医家
+
+    Annotations: 
+        rdfs:label "The people who dedicated their lives to the development of (traditional Chinese) medicine from ancient times , particularly the ancestors who are symbolized as Huangdi and Shennong."@en,
+        rdfs:label "医家"@zh,
+        rdfs:label "Medical specialist"@en
+    
+    SubClassOf: 
+        各家学说
+    
+    
+Class: 生理现象与过程
+
+    Annotations: 
+        rdfs:label "Phenomena or process that organism itself have or due to some activity."@en,
+        rdfs:label "生理现象与过程"@zh,
+        rdfs:label "Physiology phenomenon or process"@en
+    
+    SubClassOf: 
+        现象与过程
+    
+    
+Class: 证侯
+
+    Annotations: 
+        rdfs:label "Syndrome"@en,
+        rdfs:comment "Summarization of the cause, nature and location of the pathological change at a certain stages of disease."@en,
+        rdfs:label "证候"@zh,
+        rdfs:label "pattern"@en,
+        rdfs:comment "证候是中医对人体病变的分类体系."@zh
+    
+    SubClassOf: 
+        病因病机疾病
+    
+    
+Class: 脏腑
+
+    Annotations: 
+        rdfs:comment "A collective term for internal organs, also called zang-organs and fu-organs."@en,
+        rdfs:label "脏腑"@zh,
+        rdfs:label "Viscera & Bowel"@en
+    
+    SubClassOf: 
+        功能性人体系统
+    
+    
+Class: 中华传统哲学
+
+    Annotations: 
+        rdfs:comment "Philosophical thought that was developed by ancient Chinese, through the generalization and summarization of their natural and social knowledge."@en,
+        rdfs:label "中华传统哲学"@zh,
+        rdfs:label "Traditional Chinese philosophy"@en
+    
+    SubClassOf: 
+        中医相关学科
+    
+    
+Class: 中医相关自然物理学科
+
+    Annotations: 
+        rdfs:comment "A subject that involves the study of natural phenomena or physical phenomena related TCM."@en,
+        rdfs:label "Related nature physics subjects of traditional Chinese medicine"@en,
+        rdfs:label "中医相关自然物理学科"@zh
+    
+    SubClassOf: 
+        中医相关学科
+    
+    
+Class: 望诊
+
+    Annotations: 
+        rdfs:label "Inspection"@zh,
+        rdfs:label "望诊"@zh
+    
+    SubClassOf: 
+        诊法
+    
+    
+Class: 中药属性和功能
+
+    Annotations: 
+        rdfs:label "Property and function of Chinese medicinal"@en,
+        rdfs:label "中药属性和功能"@zh,
+        rdfs:comment "Refer to the property, flavor, meridian entry, upbearing, downbearing, floating and sinking, toxin, and function of traditional Chinese drugs."@en
+    
+    SubClassOf: 
+        现象与过程
+    
+    
+Class: 腑
+
+    Annotations: 
+        rdfs:label "腑"@zh,
+        rdfs:label "bowel"@en
+    
+    SubClassOf: 
+        脏腑
+    
+    
+Class: 七情
+
+    Annotations: 
+        rdfs:label "七情"@zh,
+        rdfs:label "Seven emotions"@en,
+        rdfs:label "A collective term for joy, anger, thought, anxiety, sorrow, fear and fright, taken as endogenous factors causing diseases if in excess."@en
+    
+    SubClassOf: 
+        中医心理
+    
+    
+Class: 针灸疗法
+
+    Annotations: 
+        rdfs:comment "Treatment of disease by inserting needles along specific pathways or meridians. The placement varies with the disease being treated. It is sometimes used in conjunction with heat, moxibustion, acupressure, or electric stimulation."@en,
+        rdfs:label "Acupuncture therapy"@en,
+        rdfs:label "针灸疗法"@zh
+    
+    SubClassOf: 
+        治法
+    
+    
+Class: 方剂
+
+    Annotations: 
+        rdfs:comment "Formula refers to herbal formula in TCM domain, which is prescriptions as mixtures of multiple herbs."@en,
+        rdfs:label "Formula"@en,
+        rdfs:comment "方剂指由若干中草药混合而成的处方."@zh,
+        rdfs:label "方剂"@zh
+    
+    EquivalentTo: 
+        药用物质
+         and (包含 some 药用物质)
+         and (治疗 some 证侯)
+    
+    SubClassOf: 
+        药用物质
+    
+    
+Class: 神
+
+    Annotations: 
+        rdfs:label "Mind"@en,
+        rdfs:label "Mental activities, referring to mind, consciousness, thinking and feeling."@en,
+        rdfs:label "神"@zh
+    
+    SubClassOf: 
+        中医心理
+    
+    
+Class: 阴阳理论
+
+    Annotations: 
+        rdfs:label "阴阳理论"@zh,
+        rdfs:label "Yin-yang theory"@en,
+        rdfs:comment "An ancient Chinese philosophical concept, dealing with two opposite aspects of matters in nature which are interrelated with each other. Its principle is widely applied to traditional Chinese medicine."@en
+    
+    SubClassOf: 
+        中医理论
+    
+    
+Class: 物理和具象实体
+
+    Annotations: 
+        rdfs:comment "An object perceptible to the sense of vision or touch. (UMLS)"@zh,
+        rdfs:label "Physical and presentational object"@en,
+        rdfs:label "物理和具象实体"@zh
+    
+    SubClassOf: 
+        实体
+    
+    
+Class: 毒性
+
+    Annotations: 
+        rdfs:comment "Any virulent pathogen that causes a fulminating disease."@en,
+        rdfs:label "毒性"@zh,
+        rdfs:label "Toxin"@en
+    
+    SubClassOf: 
+        药性
+    
+    
+Class: 五行理论
+
+    Annotations: 
+        rdfs:label "五行理论"@zh,
+        rdfs:comment "One of the philosophical theories of medical practice in ancient China, concerning the composition and evolution of the physical universe, epitomized by the nature and the inhibition-generation relationships of the five phases, wood, fire, earth, metal and water, serving as the guiding ideology and methodology of physiology, pathology, clinical diagnosis and treatment, also known as five elements theory."@en,
+        rdfs:label "Five phase theory"@en
+    
+    SubClassOf: 
+        中医理论
+    
+    
+Class: 病因病机
+
+    Annotations: 
+        rdfs:comment "Study of the cause, development, and mechanism of disease according to the basic theory of TCM."@en,
+        rdfs:label "病因病机"@zh,
+        rdfs:label "Etiology and pathogenesis"@en
+    
+    SubClassOf: 
+        病因病机疾病
+    
+    
+Class: 配伍
+
+    Annotations: 
+        rdfs:label "配伍"@zh,
+        rdfs:label "Chinese medicinal combination"@en,
+        rdfs:comment "Use various medicinals jointly in a formula or prescription for producing the desired therapeutic effect and reducing toxic or side effects."@en
+    
+    SubClassOf: 
+        功效
+    
+    
+Class: 闻诊
+
+    Annotations: 
+        rdfs:label "listening and smelling examination"@en,
+        rdfs:label "闻诊"@zh
+    
+    SubClassOf: 
+        诊法
+    
+    
+Class: 血
+
+    Annotations: 
+        rdfs:comment "血"@zh,
+        rdfs:comment "Blood"@en,
+        rdfs:comment "The red fluid circulating through the blood vessels, and nourishing and moistening the whole body."@en
+    
+    SubClassOf: 
+        人体基本物质
+    
+    
+Class: 四诊
+
+    Annotations: 
+        rdfs:label "four examinations"@en,
+        rdfs:label "四诊"@zh
+    
+    EquivalentTo: 
+        切诊
+         or 望诊
+         or 问诊
+         or 闻诊
+    
+    SubClassOf: 
+        诊法
+    
+    
+Class: 中医生理功能
+
+    Annotations: 
+        rdfs:comment "Study of human physiological state according to TCM Theory."@en,
+        rdfs:label "中医生理功能"@zh,
+        rdfs:label "Traditional Chinese medicine physiological function"@en
+    
+    SubClassOf: 
+        生理现象与过程
+    
+    
+Class: 中药化学成分
+
+    Annotations: 
+        rdfs:label "中药化学成分"@zh,
+        rdfs:comment "Molecular components that are extracted from Chinese medicinal after extraction, separation, identification, structure determination."@zh,
+        rdfs:label "Chemical constituent of Chinese medicine"@en
+    
+    EquivalentTo: 
+        化学物质
+         and 药用物质
+    
+    SubClassOf: 
+        药用物质
+    
+    
+Class: 活动
+
+    Annotations: 
+        rdfs:label "活动"@zh,
+        rdfs:label "Activity"@en,
+        rdfs:label "An operation or series of operations that an organism or machine carries out or participates in."@en
+    
+    SubClassOf: 
+        事件
+    
+    
+Class: 饮食疗法
+
+    Annotations: 
+        rdfs:label "Diet therapy"@en,
+        rdfs:label "饮食疗法"@zh,
+        rdfs:comment "Also known as the food therapy. It is a way that will regulate the body and treat disease according to the different nature of food flavors and acting on different organs. Use nutritious food or medicinal food products to reinforce the healthy qi and strong physique."@en
+    
+    SubClassOf: 
+        治法
+    
+    
+Class: 问诊
+
+    Annotations: 
+        rdfs:label "问诊"@zh,
+        rdfs:label "Inquiry"@zh
+    
+    SubClassOf: 
+        诊法
+    
+    
+Class: 中医诊断
+
+    Annotations: 
+        rdfs:label "中医诊断"@en,
+        rdfs:comment "Determination of the nature of a diseased condition; identification of a disease by careful investigation of its symptoms and history; also, the opinion (formally stated) resulting from such investigation."@en,
+        rdfs:label "Traditional Chinese diagnostics"@en
+    
+    SubClassOf: 
+        活动
+    
+    
+Class: 药用矿物
+
+    Annotations: 
+        rdfs:label "药用矿物"@zh,
+        rdfs:comment "A naturally occurring, homogeneous inorganic solid substance having a definite chemical composition, and have health function or can be used to prevent and treat the disease."@en,
+        rdfs:label "Medicinal mineral"@en
+    
+    SubClassOf: 
+        药用动物植物矿物
+    
+    
+Class: 中药
+
+    Annotations: 
+        rdfs:label "中药"@zh,
+        rdfs:label "Chinese medicinal"@en,
+        rdfs:comment "Usually referring to those medicinal substances recorded in Chinese materia medica."@en
+    
+    EquivalentTo: 
+        药用物质
+         and (使用 some 植物)
+         and (治疗 some 证侯)
+    
+    SubClassOf: 
+        药用物质
+    
+    
+Class: 药用植物
+
+    Annotations: 
+        rdfs:comment "Generally refers to those plants that have health function or can be used to prevent and treat the disease."@en,
+        rdfs:label "Medicinal plant"@en,
+        rdfs:label "药用植物"@zh
+    
+    SubClassOf: 
+        药用动物植物矿物
+    
+    
+Individual: 肾虚证
+
+    Annotations: 
+        rdfs:label "Kideny Deficiency"@en,
+        rdfs:label "kidney deficiency syndrome"@en,
+        rdfs:label "肾虚证"@zh
+    
+    Types: 
+        证侯
+    
+    Facts:  
+     的病位是  肾
+    
+    
+Individual: 石杉碱甲
+
+    Annotations: 
+        rdfs:isDefinedBy <Http://www.catcm.ac.cn/doc/64010>,
+        rdfs:label "石杉碱甲"@zh,
+        rdfs:label "Huperzine A"@en,
+        rdfs:seeAlso <Http://www.catcm.ac.cn/doc/64010>,
+        rdfs:comment "Huperzine A is a naturally occurring sesquiterpene alkaloid found in the extracts of the firmoss Huperzia serrata."@en
+    
+    Types: 
+        化学物质,
+        药用物质
+    
+    Facts:  
+     治疗  阿尔茨海默症,
+     治疗  记忆减退,
+     治疗  肾阳证
+    
+    
+Individual: 白术
+
+    Annotations: 
+        rdfs:label "白术"@zh,
+        rdfs:label "Atractylodes"@en
+    
+    Types: 
+        中药
+    
+    
+Individual: 肾阳证
+
+    Annotations: 
+        rdfs:label "kidney yang syndrome"@en,
+        rdfs:label "肾阳证"@zh
+    
+    Types: 
+        证侯
+    
+    
+Individual: 咸
+
+    Annotations: 
+        rdfs:label "咸"@zh,
+        rdfs:label "Salty"@en
+    
+    Types: 
+        四气五味
+    
+    
+Individual: 阳证
+
+    Annotations: 
+        rdfs:label "阳证"@zh,
+        rdfs:label "yang syndrome"@zh
+    
+    Types: 
+        证侯
+    
+    
+Individual: 虚证
+
+    Annotations: 
+        rdfs:label "虚证"@zh,
+        rdfs:label "Deficiency"@en
+    
+    Types: 
+        证侯
+    
+    Facts:  
+     传递性下位概念  肾虚证,
+     传递性下位概念  肾阳证,
+     传递性下位概念  阳证
+    
+    
+Individual: 脾
+
+    Annotations: 
+        rdfs:label "脾"@zh,
+        rdfs:label "Spleen"@en
+    
+    Types: 
+        脏
+    
+    
+Individual: 人参
+
+    Annotations: 
+        rdfs:label "Ginseng"@en,
+        rdfs:label "人参"@zh
+    
+    Types: 
+        中药
+    
+    Facts:  
+     治疗  虚证,
+     有药味  甜,
+     有药味  苦
+    
+    
+Individual: 水
+
+    Annotations: 
+        rdfs:comment "水"@zh,
+        rdfs:label "水"@zh,
+        rdfs:label "Water"@en
+    
+    Types: 
+        五行
+    
+    Facts:  
+     滋养  木
+    
+    
+Individual: 肾阳虚证
+
+    Annotations: 
+        rdfs:label "肾阳虚证"@zh,
+        rdfs:label "Kideny Yang Deficiency"@en
+    
+    Types: 
+        证侯
+    
+    Facts:  
+     传递性上位概念  虚证,
+     相关关系  阿尔茨海默症,
+     相关关系  记忆减退,
+     传递性上位概念  肾虚证,
+     传递性上位概念  阳证,
+     相关关系  怀孕
+    
+    
+Individual: 肝
+
+    Annotations: 
+        rdfs:label "肝"@zh,
+        rdfs:label "Liver"@en
+    
+    Types: 
+        脏
+    
+    
+Individual: 甜
+
+    Annotations: 
+        rdfs:label "甜"@zh,
+        rdfs:label "Sweet"@en
+    
+    Types: 
+        四气五味
+    
+    
+Individual: 记忆减退
+
+    Annotations: 
+        rdfs:label "记忆减退"@zh,
+        rdfs:label "Memory Loss"@en
+    
+    Types: 
+        症状体征
+    
+    Facts:  
+     相关关系  肾阳证
+    
+    
+Individual: 辛
+
+    Annotations: 
+        rdfs:label "Pungent"@en,
+        rdfs:label "辛"@zh
+    
+    Types: 
+        四气五味
+    
+    
+Individual: 怀孕
+
+    Annotations: 
+        rdfs:label "怀孕"@zh,
+        rdfs:label "pregnancy"@en
+    
+    Types: 
+        临床状况
+    
+    
+Individual: 木
+
+    Annotations: 
+        rdfs:label "Wood"@en,
+        rdfs:comment "木"@zh,
+        rdfs:label "木"@zh
+    
+    Types: 
+        五行
+    
+    
+Individual: 苦
+
+    Annotations: 
+        rdfs:label "苦"@zh,
+        rdfs:label "Bitter"@en
+    
+    Types: 
+        四气五味
+    
+    
+Individual: 四君子汤
+
+    Annotations: 
+        rdfs:label "four gentlemen decoction"@en,
+        rdfs:label "四君子汤"@zh,
+        rdfs:label "Four gentlemen decoction"@en
+    
+    Types: 
+        方剂,
+        药用物质
+    
+    Facts:  
+     包含  人参,
+     治疗  肾阳证,
+     君药  人参,
+     佐药  茯苓,
+     使药  甘草,
+     治疗  肾虚证,
+     臣药  白术
+    
+    
+Individual: 肺
+
+    Annotations: 
+        rdfs:label "Lung"@en,
+        rdfs:label "肺"@zh
+    
+    Types: 
+        脏
+    
+    
+Individual: 甘草
+
+    Annotations: 
+        rdfs:label "Glycyrrhizae"@en,
+        rdfs:label "甘草"@zh
+    
+    Types: 
+        中药
+    
+    
+Individual: 千层塔
+
+    Annotations: 
+        rdfs:label "千层塔"@zh,
+        rdfs:label "Huperzia serrata"@en
+    
+    Types: 
+        中药
+    
+    Facts:  
+     包含化学物质  石杉碱甲
+    
+    
+Individual: 肾
+
+    Annotations: 
+        rdfs:label "Kidney"@en,
+        rdfs:label "肾"@zh
+    
+    Types: 
+        脏
+    
+    
+Individual: 心
+
+    Annotations: 
+        rdfs:label "心"@zh,
+        rdfs:label "Heart"@en
+    
+    Types: 
+        脏
+    
+    
+Individual: 茯苓
+
+    Annotations: 
+        rdfs:label "Fu Ling"@en,
+        rdfs:label "茯苓"@zh
+    
+    Types: 
+        中药
+    
+    
+Individual: 阳虚证
+
+    Annotations: 
+        rdfs:label "阳虚证"@zh,
+        rdfs:label "Yang Deficiency"@en
+    
+    Types: 
+        证侯
+    
+    
+Individual: 阿尔茨海默症
+
+    Annotations: 
+        rdfs:comment "以渐进性痴呆为特征的人类退化性紊乱."@zh,
+        rdfs:comment "A human degenerative disorder characterized by progressive dementia."@en,
+        rdfs:label "阿尔茨海默症"@zh,
+        rdfs:label "Alzheimer's Disease"@en
+    
+    Types: 
+        疾病
+    
+    
+Individual: 酸
+
+    Annotations: 
+        rdfs:label "酸"@zh,
+        rdfs:label "Sour"@en
+    
+    Types: 
+        四气五味
+    
+    

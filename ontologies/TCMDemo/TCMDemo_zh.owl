@@ -31,25 +31,879 @@ AnnotationProperty: rdfs:comment
 Datatype: rdf:PlainLiteral
 
     
+ObjectProperty: functionally_related_to
+
+    SubPropertyOf: 
+        associated_with
+    
+    EquivalentTo: 
+        功能上相关
+    
+    
+ObjectProperty: …的测量值
+
+    Annotations: 
+        rdfs:label "measurement of"@en,
+        rdfs:label "…的测量值"@zh,
+        rdfs:comment "The dimension, quantity, or capacity determined by measuring."@en,
+        rdfs:comment "被测量了的尺寸、数量、容量值"@zh
+    
+    SubPropertyOf: 
+        概念上相关
+    
+    EquivalentTo: 
+        measurement_of
+    
+    
+ObjectProperty: degree_of
+
+    SubPropertyOf: 
+        conceptually_related_to
+    
+    EquivalentTo: 
+        …的程度-等级
+    
+    
+ObjectProperty: physically_related_to
+
+    SubPropertyOf: 
+        associated_with
+    
+    EquivalentTo: 
+        物理上相关
+    
+    
+ObjectProperty: …之中的焦点问题
+
+    Annotations: 
+        rdfs:comment "Is an issue in or a point of discussion, study, debate, or dispute."@en,
+        rdfs:label "issue in"@en,
+        rdfs:label "…之中的焦点问题"@zh,
+        rdfs:comment "讨论、研究、争论、辩论中的要点、关键。"@zh
+    
+    SubPropertyOf: 
+        概念上相关
+    
+    EquivalentTo: 
+        issue_in
+    
+    
+ObjectProperty: tributary_of
+
+    SubPropertyOf: 
+        physically_related_to
+    
+    EquivalentTo: 
+        由…汇合
+    
+    
+ObjectProperty: 空间上相关
+
+    Annotations: 
+        rdfs:label "空间上相关"@zh,
+        rdfs:label "spatially related to"@en,
+        rdfs:comment "空间区域上的相关。"@zh,
+        rdfs:comment "Related by place or region."@en
+    
+    SubPropertyOf: 
+        相关关系链
+    
+    EquivalentTo: 
+        spatially_related_to
+    
+    
+ObjectProperty: 发生于…情况下
+
+    Annotations: 
+        rdfs:comment "Takes place in or happens under given conditions, circumstances, or time periods, or in a given location or population. This includes appears in, transpires, comes about, is present in, and exists in."@en,
+        rdfs:label "发生于…情况下"@zh,
+        rdfs:comment "在给定的条件、环境、时期里或给定的位置、场所或人口下发生。包括出现于、发生、产生、出现、存在等"@zh,
+        rdfs:label "occurs in"@en
+    
+    SubPropertyOf: 
+        功能上相关
+    
+    EquivalentTo: 
+        occurs_in
+    
+    
+ObjectProperty: 君药
+
+    Annotations: 
+        rdfs:label "has king"@en,
+        rdfs:label "君药"@zh
+    
+    SubPropertyOf: 
+        包含中草药
+    
+    
+ObjectProperty: 带来-造成
+
+    Annotations: 
+        rdfs:comment "作用或影响一个实体"@zh,
+        rdfs:label "带来-造成"@zh,
+        rdfs:comment "Acts on or influences an entity."@en,
+        rdfs:label "brings about"@en
+    
+    SubPropertyOf: 
+        功能上相关
+    
+    EquivalentTo: 
+        brings_about
+    
+    
+ObjectProperty: similar_concepts
+
+    SubPropertyOf: 
+        conceptually_related_to
+    
+    EquivalentTo: 
+        与…类似概念
+    
+    
+ObjectProperty: 实施
+
+    Annotations: 
+        rdfs:label "carries out"@en,
+        rdfs:comment "Executes a function or performs a procedure or activity. This includes transacts, operates on, handles, and executes."@en,
+        rdfs:label "实施"@zh,
+        rdfs:comment "执行一项功能或完成一项手续或活动。包括处理，操作、运转，操纵、运用，实行、执行等。"@zh
+    
+    SubPropertyOf: 
+        执行
+    
+    EquivalentTo: 
+        carries_out
+    
+    
+ObjectProperty: disrupts
+
+    SubPropertyOf: 
+        affects
+    
+    EquivalentTo: 
+        干扰
+    
+    
+ObjectProperty: 有药味
+
+    Annotations: 
+        rdfs:label "has herbal taste"@en,
+        rdfs:label "具有药味"@zh
+    
+    SubPropertyOf: 
+        相关关系链
+    
+    Domain: 
+        中药
+    
+    Range: 
+        四气五味
+    
+    
+ObjectProperty: …的方法
+
+    Annotations: 
+        rdfs:label "…的方法"@zh,
+        rdfs:comment "The manner and sequence of events in performing an act or procedure"@en,
+        rdfs:comment "事件在执行或完成一个动作或过程中的方式或顺序。"@zh,
+        rdfs:label "method of"@en
+    
+    SubPropertyOf: 
+        概念上相关
+    
+    EquivalentTo: 
+        method_of
+    
+    
+ObjectProperty: produces
+
+    SubPropertyOf: 
+        brings_about
+    
+    EquivalentTo: 
+        产生
+    
+    
+ObjectProperty: isa
+
+    EquivalentTo: 
+        等级关系链
+    
+    
+ObjectProperty: connected_to
+
+    SubPropertyOf: 
+        physically_related_to
+    
+    EquivalentTo: 
+        与…相连
+    
+    
+ObjectProperty: brings_about
+
+    SubPropertyOf: 
+        functionally_related_to
+    
+    EquivalentTo: 
+        带来-造成
+    
+    
+ObjectProperty: exhibits
+
+    SubPropertyOf: 
+        performs
+    
+    EquivalentTo: 
+        展示
+    
+    
+ObjectProperty: 等级关系链
+
+    Annotations: 
+        rdfs:label "isa"@en,
+        rdfs:comment ""@en,
+        rdfs:comment ""@zh,
+        rdfs:label "等级关系链"@en,
+        rdfs:label "等级关系链"@zh
+    
+    EquivalentTo: 
+        isa
+    
+    
+ObjectProperty: 证实
+
+    Annotations: 
+        rdfs:comment "为一个实体或过程在某一时间的存在提供证据。"@zh,
+        rdfs:label "indicates"@en,
+        rdfs:comment "Gives evidence for the presence at some time of an entity or process."@en,
+        rdfs:label "证实"@zh
+    
+    SubPropertyOf: 
+        功能上相关
+    
+    EquivalentTo: 
+        indicates
+    
+    
+ObjectProperty: 影响
+
+    Annotations: 
+        rdfs:comment "改变或影响现有的条件、状态、情形、实体产生一种直接的效果。包括起作用，改变，影响，预先安排，刺激、促进，管理、控制、调节，压下，阻止，提高、增强，起作用、有助于、促成，引导、致使，更改、修改等。"@zh,
+        rdfs:label "affects"@en,
+        rdfs:comment "Produces a direct effect on. Implied here is the altering or influencing of an existing condition, state, situation, or entity. This includes has a role in, alters, influences, predisposes, catalyzes, stimulates, regulates, depresses, impedes, enhances, contributes to, leads to, and modifies."@en,
+        rdfs:label "影响"@zh
+    
+    SubPropertyOf: 
+        功能上相关
+    
+    EquivalentTo: 
+        affects
+    
+    
+ObjectProperty: 时间上相关
+
+    Annotations: 
+        rdfs:label "时间上相关"@zh,
+        rdfs:label "temporally related to"@en,
+        rdfs:comment "Related in time by preceding, co-occuring with, or following."@en,
+        rdfs:comment "时间上的提前、同时、随后相关"@zh
+    
+    SubPropertyOf: 
+        相关关系链
+    
+    EquivalentTo: 
+        temporally_related_to
+    
+    
+ObjectProperty: 与…相表里
+
+    Annotations: 
+        rdfs:label "inter exterior and interior with"@en,
+        rdfs:comment ""@en,
+        rdfs:comment "脏腑以及经络之间的阴阳表里关系，反映的是脏腑经络功能上的相互影响。"@zh,
+        rdfs:label "与…相表里"@zh
+    
+    SubPropertyOf: 
+        影响
+    
+    EquivalentTo: 
+        inter_exterior_and_interior_with
+    
+    
+ObjectProperty: …的评价
+
+    Annotations: 
+        rdfs:comment "Judgment of the value or degree of some attribute or process."@en,
+        rdfs:comment "判断某种属性或过程的价值或程度。"@zh,
+        rdfs:label "evaluation of"@en,
+        rdfs:label "…的评价"@zh
+    
+    SubPropertyOf: 
+        概念上相关
+    
+    EquivalentTo: 
+        evaluation_of
+    
+    
+ObjectProperty: 管理
+
+    Annotations: 
+        rdfs:comment "管理，有助于照顾个体或由个体组成的团体"@zh,
+        rdfs:comment "Administers, or contributes to the care of an individual or group of individuals."@en,
+        rdfs:label "管理"@zh,
+        rdfs:label "manages"@en
+    
+    SubPropertyOf: 
+        影响
+    
+    EquivalentTo: 
+        manages
+    
+    
+ObjectProperty: 概念上相关
+
+    Annotations: 
+        rdfs:label "概念上相关"@zh,
+        rdfs:comment "Related by some abstract concept, thought, or idea."@en,
+        rdfs:comment "被某些理论性的概念、思想和想法相关。"@zh,
+        rdfs:label "conceptually related to"@en
+    
+    SubPropertyOf: 
+        相关关系链
+    
+    EquivalentTo: 
+        conceptually_related_to
+    
+    
+ObjectProperty: …成份
+
+    Annotations: 
+        rdfs:comment "组成成分或构成成分。指一个部分的要素、成分。"@zh,
+        rdfs:comment "Is a component of, as in a constituent of a preparation."@en,
+        rdfs:label "…成份"@zh,
+        rdfs:label "ingredient of"@en
+    
+    SubPropertyOf: 
+        物理上相关
+    
+    EquivalentTo: 
+        ingredient_of
+    
+    
+ObjectProperty: 由…组成
+
+    Annotations: 
+        rdfs:comment "一个整体的结构上的组成部分或者某种材料或物质的构成部分。包括由…组成，由…构成，由…形成等。"@zh,
+        rdfs:label "consists of"@en,
+        rdfs:comment "Is structurally made up of in whole or in part of some material or matter. This includes composed of, made of, and formed of."@en,
+        rdfs:label "由…组成"@zh
+    
+    SubPropertyOf: 
+        物理上相关
+    
+    EquivalentTo: 
+        consists_of
+    
+    
+ObjectProperty: 使药
+
+    Annotations: 
+        rdfs:label "使药"@zh,
+        rdfs:label "has messenger"@en
+    
+    SubPropertyOf: 
+        包含中草药
+    
+    
+ObjectProperty: temporally_related_to
+
+    SubPropertyOf: 
+        associated_with
+    
+    EquivalentTo: 
+        时间上相关
+    
+    
+ObjectProperty: interconnects
+
+    SubPropertyOf: 
+        physically_related_to
+    
+    EquivalentTo: 
+        使…相互联系
+    
+    
+ObjectProperty: 执行
+
+    Annotations: 
+        rdfs:label "执行"@zh,
+        rdfs:comment "执行、实行；完成、实现：达到一种行为状态。"@zh,
+        rdfs:comment "Executes, accomplishes, or achieves an activity."@en,
+        rdfs:label "performs"@en
+    
+    SubPropertyOf: 
+        功能上相关
+    
+    EquivalentTo: 
+        performs
+    
+    
+ObjectProperty: prevents
+
+    SubPropertyOf: 
+        affects
+    
+    EquivalentTo: 
+        预防
+    
+    
+ObjectProperty: …的进程
+
+    Annotations: 
+        rdfs:label "…的进程"@zh,
+        rdfs:comment "行为，功能或状态？"@zh,
+        rdfs:comment "Action, function, or state of."@en,
+        rdfs:label "process of"@en
+    
+    SubPropertyOf: 
+        发生于…情况下
+    
+    EquivalentTo: 
+        process_of
+    
+    
+ObjectProperty: complicates
+
+    SubPropertyOf: 
+        affects
+    
+    EquivalentTo: 
+        并发
+    
+    
+ObjectProperty: causes
+
+    SubPropertyOf: 
+        brings_about
+    
+    EquivalentTo: 
+        引起
+    
+    
+ObjectProperty: conceptually_related_to
+
+    SubPropertyOf: 
+        associated_with
+    
+    EquivalentTo: 
+        概念上相关
+    
+    
+ObjectProperty: derivative_of
+
+    SubPropertyOf: 
+        conceptually_related_to
+    
+    EquivalentTo: 
+        衍生的
+    
+    
+ObjectProperty: location_of
+
+    SubPropertyOf: 
+        spatially_related_to
+    
+    EquivalentTo: 
+        位于…
+    
+    
+ObjectProperty: 由…汇合
+
+    Annotations: 
+        rdfs:label "tributary of"@en,
+        rdfs:comment "合并、并入。例如，血管的汇合。"@zh,
+        rdfs:comment "Merges with. For example, the confluence of veins."@en,
+        rdfs:label "由…汇合"@zh
+    
+    SubPropertyOf: 
+        物理上相关
+    
+    EquivalentTo: 
+        tributary_of
+    
+    
+ObjectProperty: process_of
+
+    SubPropertyOf: 
+        occurs_in
+    
+    EquivalentTo: 
+        …的进程
+    
+    
+ObjectProperty: result_of
+
+    SubPropertyOf: 
+        functionally_related_to
+    
+    EquivalentTo: 
+        …的结果-效果
+    
+    
+ObjectProperty: measurement_of
+
+    SubPropertyOf: 
+        conceptually_related_to
+    
+    EquivalentTo: 
+        …的测量值
+    
+    
+ObjectProperty: method_of
+
+    SubPropertyOf: 
+        conceptually_related_to
+    
+    EquivalentTo: 
+        …的方法
+    
+    
 ObjectProperty: owl:topObjectProperty
 
+    
+ObjectProperty: 相关关系链
+
+    Annotations: 
+        rdfs:comment "有重要的或显著的关系"@zh,
+        rdfs:label "associated with"@en,
+        rdfs:comment "has a significant or salient relationship to"@en,
+        rdfs:label "相关关系链"@zh
+    
+    EquivalentTo: 
+        associated_with
+    
+    Characteristics: 
+        Symmetric
+    
+    Domain: 
+        临床状况
+    
+    Range: 
+        临床状况
+    
+    
+ObjectProperty: occurs_in
+
+    SubPropertyOf: 
+        functionally_related_to
+    
+    EquivalentTo: 
+        发生于…情况下
+    
+    
+ObjectProperty: …的部分
+
+    Annotations: 
+        rdfs:comment "Composes, with one or more other physical units, some larger whole. This includes component of, division of, portion of, fragment of, section of, and layer of."@en,
+        rdfs:label "…的部分"@zh,
+        rdfs:comment "有一个或更多个物理单位组成、构成某些较大的整体；包括…的成分，…的部分，…的片段，…的部件，…的层等。"@zh,
+        rdfs:label "part of"@en
+    
+    SubPropertyOf: 
+        物理上相关
+    
+    EquivalentTo: 
+        part_of
+    
+    
+ObjectProperty: 先于…发生
+
+    Annotations: 
+        rdfs:comment "Occurs earlier in time. This includes antedates, comes before, is in advance of, predates, and is prior to."@en,
+        rdfs:label "precedes"@en,
+        rdfs:comment "提前发生。包括比实际提前的时间，在…之前发生，提前的，预先的，优先的"@zh,
+        rdfs:label "先于…发生"@zh
+    
+    SubPropertyOf: 
+        时间上相关
+    
+    EquivalentTo: 
+        precedes
+    
+    
+ObjectProperty: surrounds
+
+    SubPropertyOf: 
+        spatially_related_to
+    
+    EquivalentTo: 
+        包围-周围
+    
+    
+ObjectProperty: ingredient_of
+
+    SubPropertyOf: 
+        physically_related_to
+    
+    EquivalentTo: 
+        …成份
+    
+    
+ObjectProperty: issue_in
+
+    SubPropertyOf: 
+        conceptually_related_to
+    
+    EquivalentTo: 
+        …之中的焦点问题
+    
+    
+ObjectProperty: 传递性下位概念
+
+    Annotations: 
+        rdfs:label "narrowerTransitive"@en,
+        rdfs:label "传递性下位概念"@zh
+    
+    SubPropertyOf: 
+        等级关系链
+    
+    
+ObjectProperty: manages
+
+    SubPropertyOf: 
+        affects
+    
+    EquivalentTo: 
+        管理
+    
+    
+ObjectProperty: 并发
+
+    Annotations: 
+        rdfs:comment "Causes to become more severe or complex or results in adverse effects."@en,
+        rdfs:comment "引起变得更严重或更复杂或产生一种不利的结果。"@zh,
+        rdfs:label "complicates"@en,
+        rdfs:label "并发"@zh
+    
+    SubPropertyOf: 
+        影响
+    
+    EquivalentTo: 
+        complicates
+    
+    
+ObjectProperty: 治疗
+
+    Annotations: 
+        rdfs:comment "Applies a remedy with the object of effecting a cure or managing a condition."@en,
+        rdfs:label "treats"@en,
+        rdfs:comment "提供一种治愈或改善症状的疗法"@zh,
+        rdfs:label "治疗"@zh
+    
+    SubPropertyOf: 
+        相关关系链,
+        影响
+    
+    EquivalentTo: 
+        treats
+    
+    Domain: 
+        治法
+         or 药用物质
+    
+    Range: 
+        临床状况
+    
+    
+ObjectProperty: 位于…
+
+    Annotations: 
+        rdfs:comment "The position, site, or region of an entity or the site of a process."@en,
+        rdfs:comment "位置、场所，一个实体的位置或一个过程的场所。"@zh,
+        rdfs:label "location of"@en,
+        rdfs:label "位于…"@zh
+    
+    SubPropertyOf: 
+        空间上相关
+    
+    EquivalentTo: 
+        location_of
+    
+    
+ObjectProperty: 生
+
+    Annotations: 
+        rdfs:label "engenders"@en,
+        rdfs:label "生"@zh
+    
+    SubPropertyOf: 
+        影响
+    
+    
+ObjectProperty: 产生
+
+    Annotations: 
+        rdfs:comment "提出、带来、产生、创造。包括出产、生长、生产，分泌，放射、发出，用生物学的方法合成，产生，释放，放出，创造、引起、造成等。"@zh,
+        rdfs:label "produces"@en,
+        rdfs:comment "Brings forth, generates or creates. This includes yields, secretes, emits, biosynthesizes, generates, releases, discharges, and creates."@en,
+        rdfs:label "产生"@zh
+    
+    SubPropertyOf: 
+        带来-造成
+    
+    EquivalentTo: 
+        produces
+    
+    
+ObjectProperty: …的概念部分
+
+    Annotations: 
+        rdfs:comment "Conceptually a portion, division, or component of some larger whole."@en,
+        rdfs:comment "概念的一部分，或某个较大整体的组成成分。"@zh,
+        rdfs:label "conceptual part of"@en,
+        rdfs:label "…的概念部分"@zh
+    
+    SubPropertyOf: 
+        概念上相关
+    
+    EquivalentTo: 
+        conceptual_part_of
+    
+    
+ObjectProperty: 展示
+
+    Annotations: 
+        rdfs:comment "表示、出示、证明等。"@zh,
+        rdfs:label "展示"@zh,
+        rdfs:comment "Shows or demonstrates."@en,
+        rdfs:label "exhibits"@en
+    
+    SubPropertyOf: 
+        执行
+    
+    EquivalentTo: 
+        exhibits
+    
+    
+ObjectProperty: 衍生的
+
+    Annotations: 
+        rdfs:label "derivative of"@en,
+        rdfs:comment "化学上，一种物质与另一种物质在结构上相关，或者能够被其他的物质所产生。这仅仅指结构上的关联。不包括功能上的关联比如.…的代谢物，.…的产物，.…的类似物。"@zh,
+        rdfs:comment "In chemistry, a substance structurally related to another or that can be made from the other substance. This is used only for structural relationships. This does not include functional relationships such as metabolite of, by product of, nor analog of."@en,
+        rdfs:label "衍生的"@zh
+    
+    SubPropertyOf: 
+        概念上相关
+    
+    EquivalentTo: 
+        derivative_of
+    
+    
+ObjectProperty: 引起
+
+    Annotations: 
+        rdfs:comment "Brings about a condition or an effect. Implied here is that an agent, such as for example, a pharmacologic substance or an organism, has brought about the effect. This includes induces, effects, evokes, and etiology."@en,
+        rdfs:label "引起"@zh,
+        rdfs:comment "引起一种状态或结果。这里所指的是一种原因，例如，一种药物或有机体产生的结果。包括引起，导致，唤起，病变的原因。"@zh,
+        rdfs:label "causes"@en
+    
+    SubPropertyOf: 
+        带来-造成
+    
+    EquivalentTo: 
+        causes
+    
+    
+ObjectProperty: 穿过
+
+    Annotations: 
+        rdfs:label "traverses"@en,
+        rdfs:comment "Crosses or extends across another physical structure or area. This includes crosses over and crosses through."@en,
+        rdfs:comment "穿过或者延伸越过另一个物理结构或区域。包括从其上跨过和从其中穿过。"@zh,
+        rdfs:label "穿过"@zh
+    
+    SubPropertyOf: 
+        空间上相关
+    
+    EquivalentTo: 
+        traverses
+    
+    
+ObjectProperty: 开处方
+
+    Annotations: 
+        rdfs:label "开处方"@zh,
+        rdfs:label "prescribes"@en
+    
+    SubPropertyOf: 
+        相关关系链
+    
+    Domain: 
+        治法
+    
+    Range: 
+        药用物质
+    
+    
+ObjectProperty: part_of
+
+    SubPropertyOf: 
+        physically_related_to
+    
+    EquivalentTo: 
+        …的部分
+    
+    
+ObjectProperty: manifestation_of
+
+    SubPropertyOf: 
+        functionally_related_to
+    
+    EquivalentTo: 
+        现象表达
+    
     
 ObjectProperty: 包含
 
     Annotations: 
         rdfs:comment "包含"@zh,
+        rdfs:comment "Holds or is the receptacle for fluids or other substances. This includes is filled with, holds, and is occupied by."@en,
         rdfs:label "包含"@zh,
-        rdfs:label "contains"@en
+        rdfs:label "contains"@en,
+        rdfs:comment "可容纳或者是一个贮藏液体或其他物质的容器。包括被…充满，可容纳，被…占用等。"@zh
     
     SubPropertyOf: 
-        相关关系
+        相关关系链,
+        物理上相关
+    
+    EquivalentTo: 
+        contains
     
     
-ObjectProperty: 传递性上位概念
+ObjectProperty: assesses_effect_of
+
+    SubPropertyOf: 
+        analyzes
+    
+    EquivalentTo: 
+        分析评估…的影响
+    
+    
+ObjectProperty: 分析
 
     Annotations: 
-        rdfs:label "broaderTransitive"@en,
-        rdfs:label "传递性上位概念"@zh
+        rdfs:label "分析"@zh,
+        rdfs:comment "Studies or examines using established quantitative or qualitative methods."@en,
+        rdfs:label "analyzes"@en,
+        rdfs:comment "用确定的定量的或定型的方法研究或检查。"@zh
+    
+    SubPropertyOf: 
+        概念上相关
+    
+    EquivalentTo: 
+        analyzes
     
     
 ObjectProperty: 包含中草药
@@ -68,101 +922,91 @@ ObjectProperty: 包含中草药
         中药
     
     
-ObjectProperty: 滋养
+ObjectProperty: 分析评估…的影响
 
     Annotations: 
-        rdfs:label "nourishes"@en,
-        rdfs:label "滋养"@zh
+        rdfs:label "assesses effect of"@en,
+        rdfs:comment "Analyzes the influence or consequences of the function or action of."@en,
+        rdfs:comment "分析功能或行为的影响或结果。"@zh,
+        rdfs:label "分析评估…的影响"@zh
     
     SubPropertyOf: 
-        生
+        分析
+    
+    EquivalentTo: 
+        assesses_effect_of
     
     
-ObjectProperty: 影响
+ObjectProperty: 干扰
 
     Annotations: 
-        rdfs:label "affects"@en,
-        rdfs:label "影响"@zh
-    
-    
-ObjectProperty: 君药
-
-    Annotations: 
-        rdfs:label "has king"@en,
-        rdfs:label "君药"@zh
-    
-    SubPropertyOf: 
-        包含中草药
-    
-    
-ObjectProperty: 相关关系
-
-    Annotations: 
-        rdfs:label "relatedTo"@en,
-        rdfs:label "相关关系"@zh
-    
-    Characteristics: 
-        Symmetric
-    
-    Domain: 
-        临床状况
-    
-    Range: 
-        临床状况
-    
-    
-ObjectProperty: 传递性下位概念
-
-    Annotations: 
-        rdfs:label "narrowerTransitive"@en,
-        rdfs:label "传递性下位概念"@zh
-    
-    
-ObjectProperty: 治疗
-
-    Annotations: 
-        rdfs:label "treats"@en,
-        rdfs:label "治疗"@zh
-    
-    SubPropertyOf: 
-        相关关系
-    
-    Domain: 
-        治法
-         or 药用物质
-    
-    Range: 
-        临床状况
-    
-    
-ObjectProperty: 臣药
-
-    Annotations: 
-        rdfs:label "has minister"@en,
-        rdfs:label "臣药"@zh
-    
-    SubPropertyOf: 
-        包含中草药
-    
-    
-ObjectProperty: 生
-
-    Annotations: 
-        rdfs:label "engenders"@en,
-        rdfs:label "生"@zh
+        rdfs:label "disrupts"@en,
+        rdfs:label "干扰"@zh,
+        rdfs:comment "改变或影响一个已经存在的条件、状态或情形，产生一种消极的影响。"@zh,
+        rdfs:comment "Alters or influences an already existing condition, state, or situation. Produces a negative effect on."@en
     
     SubPropertyOf: 
         影响
     
+    EquivalentTo: 
+        disrupts
     
-ObjectProperty: 使药
+    
+ObjectProperty: 被使用
+
+    SubPropertyOf: 
+        功能上相关
+    
+    InverseOf: 
+        使用
+    
+    
+ObjectProperty: 与…相邻
 
     Annotations: 
-        rdfs:label "使药"@zh,
-        rdfs:label "has messenger"@en
+        rdfs:comment "与另一个物理单位紧密地相连的，邻接的，没有其他的同样的结构介入其中。包括毗邻，邻接，邻近的，并列的，紧密联结的。"@zh,
+        rdfs:label "adjacent to"@en,
+        rdfs:comment "Close to, near or abutting another physical unit with no other structure of the same kind intervening. This includes adjoins, abuts, is contiguous to, is juxtaposed, and is close to."@en,
+        rdfs:label "与…相邻"@zh
     
     SubPropertyOf: 
-        包含中草药
+        空间上相关
+    
+    EquivalentTo: 
+        adjacent_to
+    
+    
+ObjectProperty: 测量
+
+    Annotations: 
+        rdfs:label "测量"@zh,
+        rdfs:comment "确定或标记尺寸、数量、程度、容量等。"@zh,
+        rdfs:comment "Ascertains or marks the dimensions, quantity, degree, or capacity of."@en,
+        rdfs:label "measures"@en
+    
+    SubPropertyOf: 
+        概念上相关
+    
+    EquivalentTo: 
+        measures
+    
+    
+ObjectProperty: treats
+
+    SubPropertyOf: 
+        affects
+    
+    EquivalentTo: 
+        治疗
+    
+    
+ObjectProperty: contains
+
+    SubPropertyOf: 
+        physically_related_to
+    
+    EquivalentTo: 
+        包含
     
     
 ObjectProperty: 包含化学物质
@@ -181,43 +1025,403 @@ ObjectProperty: 包含化学物质
         化学物质
     
     
-ObjectProperty: 使用
+ObjectProperty: spatially_related_to
 
-    Annotations: 
-        rdfs:label "使用"@zh,
-        rdfs:label "uses"@en
+    SubPropertyOf: 
+        associated_with
+    
+    EquivalentTo: 
+        空间上相关
     
     
-ObjectProperty: 开处方
+ObjectProperty: 与…相连
 
     Annotations: 
-        rdfs:label "开处方"@zh,
-        rdfs:label "prescribes"@en
+        rdfs:comment "Directly attached to another physical unit as tendons are connected to muscles. This includes attached to and anchored to."@en,
+        rdfs:label "connected to"@en,
+        rdfs:label "与…相连"@zh,
+        rdfs:comment "直接地附着在另一个物理单元上，比如肌腱与肌肉相连。包括附着在…上，固定在…上。"@zh
     
     SubPropertyOf: 
-        相关关系
+        物理上相关
     
-    Domain: 
-        治法
-    
-    Range: 
-        药用物质
+    EquivalentTo: 
+        connected_to
     
     
-ObjectProperty: 有药味
+ObjectProperty: …的发育阶段
 
     Annotations: 
-        rdfs:label "has herbal taste"@en,
-        rdfs:label "具有药味"@zh
+        rdfs:comment "个体成熟过程中的早期阶段。"@zh,
+        rdfs:label "developmental form of"@en,
+        rdfs:label "…的发育阶段"@zh,
+        rdfs:comment "An earlier stage in the individual maturation of."@en
     
     SubPropertyOf: 
-        相关关系
+        概念上相关
     
-    Domain: 
-        中药
+    EquivalentTo: 
+        developmental_form_of
     
-    Range: 
-        四气五味
+    
+ObjectProperty: 的病位是
+
+    Annotations: 
+        rdfs:label "has location"@en,
+        rdfs:label "的病位是"@zh
+    
+    SubPropertyOf: 
+        相关关系链
+    
+    
+ObjectProperty: indicates
+
+    SubPropertyOf: 
+        functionally_related_to
+    
+    EquivalentTo: 
+        证实
+    
+    
+ObjectProperty: 使…相互联系
+
+    Annotations: 
+        rdfs:comment "Serves to link or join together two or more other physical units. This includes joins, links, conjoins, articulates, separates, and bridges."@en,
+        rdfs:label "interconnects"@en,
+        rdfs:label "使…相互联系"@zh,
+        rdfs:comment "使两个或多个物理单元连接或结合在一起。包括结合，连接，连结，用关节连接，分离？桥梁连接等。"@zh
+    
+    SubPropertyOf: 
+        物理上相关
+    
+    EquivalentTo: 
+        interconnects
+    
+    
+ObjectProperty: meridian_tropism
+
+    SubPropertyOf: 
+        affects
+    
+    EquivalentTo: 
+        归…经
+    
+    
+ObjectProperty: property_of
+
+    SubPropertyOf: 
+        conceptually_related_to
+    
+    EquivalentTo: 
+        …的特性
+    
+    
+ObjectProperty: analyzes
+
+    SubPropertyOf: 
+        conceptually_related_to
+    
+    EquivalentTo: 
+        分析
+    
+    
+ObjectProperty: 功能上相关
+
+    Annotations: 
+        rdfs:label "功能上相关"@zh,
+        rdfs:comment "Related by the carrying out of some function or activity."@en,
+        rdfs:label "functionally related to"@en,
+        rdfs:comment "由于某些功能或者活动而相关。"@zh
+    
+    SubPropertyOf: 
+        相关关系链
+    
+    EquivalentTo: 
+        functionally_related_to
+    
+    
+ObjectProperty: uses
+
+    SubPropertyOf: 
+        functionally_related_to
+    
+    EquivalentTo: 
+        使用
+    
+    
+ObjectProperty: carries_out
+
+    SubPropertyOf: 
+        performs
+    
+    EquivalentTo: 
+        实施
+    
+    
+ObjectProperty: practices
+
+    SubPropertyOf: 
+        performs
+    
+    EquivalentTo: 
+        练习
+    
+    
+ObjectProperty: 与…相互作用
+
+    Annotations: 
+        rdfs:label "interacts with"@en,
+        rdfs:comment "Acts, functions, or operates together with"@en,
+        rdfs:label "与…相互作用"@zh,
+        rdfs:comment "与…一起产生效果，起作用"@zh
+    
+    SubPropertyOf: 
+        影响
+    
+    EquivalentTo: 
+        interacts_with
+    
+    
+ObjectProperty: 与…类似概念
+
+    Annotations: 
+        rdfs:comment ""@en,
+        rdfs:label "similar concepts"@en,
+        rdfs:comment ""@zh,
+        rdfs:label "与…类似概念"@zh
+    
+    SubPropertyOf: 
+        概念上相关
+    
+    EquivalentTo: 
+        similar_concepts
+    
+    
+ObjectProperty: co-occurs_with
+
+    SubPropertyOf: 
+        temporally_related_to
+    
+    EquivalentTo: 
+        与…同时发生
+    
+    
+ObjectProperty: consists_of
+
+    SubPropertyOf: 
+        physically_related_to
+    
+    EquivalentTo: 
+        由…组成
+    
+    
+ObjectProperty: interacts_with
+
+    SubPropertyOf: 
+        affects
+    
+    EquivalentTo: 
+        与…相互作用
+    
+    
+ObjectProperty: inter_exterior_and_interior_with
+
+    SubPropertyOf: 
+        affects
+    
+    EquivalentTo: 
+        与…相表里
+    
+    
+ObjectProperty: affects
+
+    SubPropertyOf: 
+        functionally_related_to
+    
+    EquivalentTo: 
+        影响
+    
+    
+ObjectProperty: 练习
+
+    Annotations: 
+        rdfs:label "练习"@zh,
+        rdfs:label "practices"@en,
+        rdfs:comment "习惯地通常地进行、实行。"@zh,
+        rdfs:comment "Performs habitually or customarily."@en
+    
+    SubPropertyOf: 
+        执行
+    
+    EquivalentTo: 
+        practices
+    
+    
+ObjectProperty: traverses
+
+    SubPropertyOf: 
+        spatially_related_to
+    
+    EquivalentTo: 
+        穿过
+    
+    
+ObjectProperty: 归…经
+
+    Annotations: 
+        rdfs:comment ""@en,
+        rdfs:label "归…经"@zh,
+        rdfs:comment "是药物对机体某部分的选择性作用。归是作用的归属，经是脏腑经络的概称"@zh,
+        rdfs:label "meridian tropism"@en
+    
+    SubPropertyOf: 
+        影响
+    
+    EquivalentTo: 
+        meridian_tropism
+    
+    
+ObjectProperty: 分支
+
+    Annotations: 
+        rdfs:comment "Arises from the division of. For example, the arborization of arteries."@en,
+        rdfs:label "分支"@zh,
+        rdfs:comment "出现于分开的部分。例如，动脉的分支。"@zh,
+        rdfs:label "branch of"@en
+    
+    SubPropertyOf: 
+        物理上相关
+    
+    EquivalentTo: 
+        branch_of
+    
+    
+ObjectProperty: 传递性上位概念
+
+    Annotations: 
+        rdfs:label "broaderTransitive"@en,
+        rdfs:label "传递性上位概念"@zh
+    
+    SubPropertyOf: 
+        等级关系链
+    
+    
+ObjectProperty: measures
+
+    SubPropertyOf: 
+        conceptually_related_to
+    
+    EquivalentTo: 
+        测量
+    
+    
+ObjectProperty: 滋养
+
+    Annotations: 
+        rdfs:label "nourishes"@en,
+        rdfs:label "滋养"@zh
+    
+    SubPropertyOf: 
+        生
+    
+    
+ObjectProperty: 诊断
+
+    Annotations: 
+        rdfs:comment "区别或鉴别特性或特征。"@zh,
+        rdfs:label "diagnoses"@en,
+        rdfs:comment "Distinguishes or identifies the nature or characteristics of."@en,
+        rdfs:label "诊断"@zh
+    
+    SubPropertyOf: 
+        概念上相关
+    
+    EquivalentTo: 
+        diagnoses
+    
+    
+ObjectProperty: 预防
+
+    Annotations: 
+        rdfs:label "预防"@zh,
+        rdfs:comment "Stops, hinders or eliminates an action or condition."@en,
+        rdfs:comment "停止、阻碍或消除一种行为或状态。"@zh,
+        rdfs:label "prevents"@en
+    
+    SubPropertyOf: 
+        影响
+    
+    EquivalentTo: 
+        prevents
+    
+    
+ObjectProperty: …的特性
+
+    Annotations: 
+        rdfs:comment "…的特征、特性，.…的品质、性质。"@zh,
+        rdfs:comment "Characteristic of, or quality of."@en,
+        rdfs:label "property of"@en,
+        rdfs:label "…的特性"@zh
+    
+    SubPropertyOf: 
+        概念上相关
+    
+    EquivalentTo: 
+        property_of
+    
+    
+ObjectProperty: 与…同时发生
+
+    Annotations: 
+        rdfs:comment "在同一时间一起或者共同地、连带地发生。包括同时发生的，并发的，同时期发生的，伴发的，共存的，伴随产生的等。"@zh,
+        rdfs:label "co-occurs with"@en,
+        rdfs:comment "Occurs at the same time as, together with, or jointly. This includes is co-incident with, is concurrent with, is contemporaneous with, accompanies, coexists with, and is concomitant with."@en,
+        rdfs:label "与…同时发生"@zh
+    
+    SubPropertyOf: 
+        时间上相关
+    
+    EquivalentTo: 
+        co-occurs_with
+    
+    
+ObjectProperty: 现象表达
+
+    Annotations: 
+        rdfs:label "manifestation of"@en,
+        rdfs:label "现象表达"@zh,
+        rdfs:comment "能直接地可见的或者能具体地明显地被表示的现象的部分，能显示潜在的过程的现象部分。包括表达，表明，展示，显示等。"@zh,
+        rdfs:comment "That part of a phenomenon which is directly observable or concretely or visibly expressed, or which gives evidence to the underlying process. This includes expression of, display of, and exhibition of."@en
+    
+    SubPropertyOf: 
+        功能上相关
+    
+    EquivalentTo: 
+        manifestation_of
+    
+    
+ObjectProperty: evaluation_of
+
+    SubPropertyOf: 
+        conceptually_related_to
+    
+    EquivalentTo: 
+        …的评价
+    
+    
+ObjectProperty: 物理上相关
+
+    Annotations: 
+        rdfs:comment "Related by virtue of some physical attribute or characteristic."@en,
+        rdfs:label "physically related to"@en,
+        rdfs:comment "由于某些物理的属性或特征而相关"@zh,
+        rdfs:label "物理上相关"@zh
+    
+    SubPropertyOf: 
+        相关关系链
+    
+    EquivalentTo: 
+        physically_related_to
     
     
 ObjectProperty: 佐药
@@ -230,14 +1434,156 @@ ObjectProperty: 佐药
         包含中草药
     
     
-ObjectProperty: 的病位是
+ObjectProperty: associated_with
+
+    EquivalentTo: 
+        相关关系链
+    
+    
+ObjectProperty: 包围-周围
 
     Annotations: 
-        rdfs:label "has location"@en,
-        rdfs:label "的病位是"@zh
+        rdfs:comment "确立分界线，定义另一个物理结构的界限。包括界限，范围，界线，围住、在…周围化线。"@zh,
+        rdfs:comment "Establishes the boundaries for, or defines the limits of another physical structure. This includes limits, bounds, confines, encloses, and circumscribes."@en,
+        rdfs:label "surrounds"@en,
+        rdfs:label "包围-周围"@zh
     
     SubPropertyOf: 
-        相关关系
+        空间上相关
+    
+    EquivalentTo: 
+        surrounds
+    
+    
+ObjectProperty: developmental_form_of
+
+    SubPropertyOf: 
+        conceptually_related_to
+    
+    EquivalentTo: 
+        …的发育阶段
+    
+    
+ObjectProperty: …的程度-等级
+
+    Annotations: 
+        rdfs:label "…的程度-等级"@zh,
+        rdfs:comment "The relative intensity of a process or the relative intensity or amount of a quality or attribute."@en,
+        rdfs:comment "一个过程相对的强度，一种属性或性质的相对强度或数量。"@zh,
+        rdfs:label "degree of"@en
+    
+    SubPropertyOf: 
+        概念上相关
+    
+    EquivalentTo: 
+        degree_of
+    
+    
+ObjectProperty: precedes
+
+    SubPropertyOf: 
+        temporally_related_to
+    
+    EquivalentTo: 
+        先于…发生
+    
+    
+ObjectProperty: branch_of
+
+    SubPropertyOf: 
+        physically_related_to
+    
+    EquivalentTo: 
+        分支
+    
+    
+ObjectProperty: conceptual_part_of
+
+    SubPropertyOf: 
+        conceptually_related_to
+    
+    EquivalentTo: 
+        …的概念部分
+    
+    
+ObjectProperty: …的结果-效果
+
+    Annotations: 
+        rdfs:comment "The condition, product, or state occurring as a consequence, effect, or conclusion of an activity or process. This includes product of, effect of, sequel of, outcome of, culmination of, and completion of."@en,
+        rdfs:comment "状态、情况、结果作为一个结果、效果或一个活动或过程的结论结局而发生。包括…的结果，…的效果，…的结局，…的成果，…的顶点，…的完成。"@zh,
+        rdfs:label "…的结果-效果"@zh,
+        rdfs:label "result of"@en
+    
+    SubPropertyOf: 
+        功能上相关
+    
+    EquivalentTo: 
+        result_of
+    
+    
+ObjectProperty: 臣药
+
+    Annotations: 
+        rdfs:label "has minister"@en,
+        rdfs:label "臣药"@zh
+    
+    SubPropertyOf: 
+        包含中草药
+    
+    
+ObjectProperty: adjacent_to
+
+    SubPropertyOf: 
+        spatially_related_to
+    
+    EquivalentTo: 
+        与…相邻
+    
+    
+ObjectProperty: performs
+
+    SubPropertyOf: 
+        functionally_related_to
+    
+    EquivalentTo: 
+        执行
+    
+    
+ObjectProperty: diagnoses
+
+    SubPropertyOf: 
+        conceptually_related_to
+    
+    EquivalentTo: 
+        诊断
+    
+    
+ObjectProperty: 使用
+
+    Annotations: 
+        rdfs:label "使用"@zh,
+        rdfs:comment "Employs in the carrying out of some activity. This includes applies, utilizes, employs, and avails."@en,
+        rdfs:label "uses"@en,
+        rdfs:comment "在某些正在进行的活动中使用。包括应用、适用、利用、使用等。"@zh
+    
+    SubPropertyOf: 
+        功能上相关
+    
+    EquivalentTo: 
+        uses
+    
+    InverseOf: 
+        被使用
+    
+    
+Class: 植物
+
+    Annotations: 
+        rdfs:label "Plant"@en,
+        rdfs:label "植物"@zh
+    
+    SubClassOf: 
+        有机体
     
     
 Class: 五行
@@ -250,8 +1596,13 @@ Class: 五行
         五行理论
     
     
-Class: 植物
+Class: 物理对象
 
+    Annotations: 
+        rdfs:comment "An object perceptible to the sense of vision or touch. (UMLS)"@zh,
+        rdfs:label "物理对象"@zh,
+        rdfs:label "Physical object"@en
+    
     SubClassOf: 
         实体
     
@@ -265,7 +1616,7 @@ Class: 化学物质
         rdfs:comment "A substance with a distinct molecular composition that is produced by or used in a chemical process."@en
     
     SubClassOf: 
-        实体
+        物质
     
     
 Class: 药用动物植物矿物
@@ -276,7 +1627,7 @@ Class: 药用动物植物矿物
         rdfs:label "药用动物、植物和矿物质"@zh
     
     SubClassOf: 
-        物理和具象实体
+        物理对象
     
     
 Class: 事件
@@ -285,6 +1636,15 @@ Class: 事件
         rdfs:label "A broad type for grouping activities, processes and states.(UMLS)"@zh,
         rdfs:label "事件"@zh,
         rdfs:label "Event"@en
+    
+    SubClassOf: 
+        owl:Thing
+    
+    
+Class: 六腑
+
+    SubClassOf: 
+        腑
     
     
 Class: 临床状况
@@ -295,6 +1655,17 @@ Class: 临床状况
     
     SubClassOf: 
         病因病机疾病
+    
+    
+Class: 精
+
+    Annotations: 
+        rdfs:label "精"@zh,
+        rdfs:label "Essence"@en,
+        rdfs:comment "Essence means two things: (1) the fundamental substance that builds up the physical structure and maintains body function; (2) reproductive essence stored in the kidney."@en
+    
+    SubClassOf: 
+        人体基本物质
     
     
 Class: 五味
@@ -310,21 +1681,14 @@ Class: 五味
         四气五味
     
     
-Class: 精
+Class: 团体
 
     Annotations: 
-        rdfs:label "精"@zh,
-        rdfs:label "Essence"@en,
-        rdfs:comment "Essence means two things: (1) the fundamental substance that builds up the physical structure and maintains body function; (2) reproductive essence stored in the kidney."@en
+        rdfs:label "Organization"@en,
+        rdfs:label "团体"@zh
     
     SubClassOf: 
-        人体基本物质
-    
-    
-Class: 六腑
-
-    SubClassOf: 
-        腑
+        概念实体
     
     
 Class: 中医人体基础
@@ -335,7 +1699,7 @@ Class: 中医人体基础
         rdfs:label "中医人体基础"@zh
     
     SubClassOf: 
-        物理和具象实体
+        物理对象
     
     
 Class: 草药
@@ -401,17 +1765,6 @@ Class: 功能性人体系统
         中医人体基础
     
     
-Class: 药性
-
-    Annotations: 
-        rdfs:label "Nature of Chinese medicinals"@en,
-        rdfs:label "药性"@zh,
-        rdfs:comment "The basic properties of a medicinal mainly includes four qi, five flavors, meridian entry, upbearing, downbearing, floating, sinking, toxin, etc."@en
-    
-    SubClassOf: 
-        中药属性和功能
-    
-    
 Class: 气
 
     Annotations: 
@@ -421,6 +1774,17 @@ Class: 气
     
     SubClassOf: 
         人体基本物质
+    
+    
+Class: 药性
+
+    Annotations: 
+        rdfs:label "Nature of Chinese medicinals"@en,
+        rdfs:label "药性"@zh,
+        rdfs:comment "The basic properties of a medicinal mainly includes four qi, five flavors, meridian entry, upbearing, downbearing, floating, sinking, toxin, etc."@en
+    
+    SubClassOf: 
+        生理现象与过程
     
     
 Class: 听气息
@@ -488,15 +1852,14 @@ Class: 功效
         中药属性和功能
     
     
-Class: 中医文献
+Class: 脏
 
     Annotations: 
-        rdfs:comment "The body of written works (e.g., books, magazines) on the subject of traditional Chinese medicine."@en,
-        rdfs:label "中医文献"@zh,
-        rdfs:label "Traditional Chinese medicine literature"@en
+        rdfs:label "Viscus"@zh,
+        rdfs:label "脏"@zh
     
     SubClassOf: 
-        概念实体
+        脏腑
     
     
 Class: 切诊
@@ -509,14 +1872,15 @@ Class: 切诊
         诊法
     
     
-Class: 脏
+Class: 中医文献
 
     Annotations: 
-        rdfs:label "Viscus"@zh,
-        rdfs:label "脏"@zh
+        rdfs:comment "The body of written works (e.g., books, magazines) on the subject of traditional Chinese medicine."@en,
+        rdfs:label "中医文献"@zh,
+        rdfs:label "Traditional Chinese medicine literature"@en
     
     SubClassOf: 
-        脏腑
+        概念实体
     
     
 Class: 中医药学科
@@ -552,6 +1916,16 @@ Class: 经络
         功能性人体系统
     
     
+Class: 有机体
+
+    Annotations: 
+        rdfs:label "有机体"@zh,
+        rdfs:label "Organism"@en
+    
+    SubClassOf: 
+        物理对象
+    
+    
 Class: 中医各家
 
     Annotations: 
@@ -565,17 +1939,6 @@ The inheritance of academic tradition, achieved through apprenticeship training,
         各家学说
     
     
-Class: 病因病机疾病
-
-    Annotations: 
-        rdfs:label "Etiology, pathogenesis and disease"@en,
-        rdfs:comment "Study of the etiology, development and mechanism of disease according to TCM theory."@en,
-        rdfs:label "病因病机疾病"@zh
-    
-    SubClassOf: 
-        现象与过程
-    
-    
 Class: 诊法
 
     Annotations: 
@@ -585,6 +1948,17 @@ Class: 诊法
     
     SubClassOf: 
         中医诊断
+    
+    
+Class: 病因病机疾病
+
+    Annotations: 
+        rdfs:label "Etiology, pathogenesis and disease"@en,
+        rdfs:comment "Study of the etiology, development and mechanism of disease according to TCM theory."@en,
+        rdfs:label "病因病机疾病"@zh
+    
+    SubClassOf: 
+        现象与过程
     
     
 Class: 按摩
@@ -663,6 +2037,16 @@ Class: 归经
         药性
     
     
+Class: 听声音
+
+    Annotations: 
+        rdfs:label "听声音"@zh,
+        rdfs:label "listening examination"@en
+    
+    SubClassOf: 
+        闻诊
+    
+    
 Class: 中医相关学科
 
     Annotations: 
@@ -683,16 +2067,6 @@ Class: 各家学说
     
     SubClassOf: 
         中医理论
-    
-    
-Class: 听声音
-
-    Annotations: 
-        rdfs:label "听声音"@zh,
-        rdfs:label "listening examination"@en
-    
-    SubClassOf: 
-        闻诊
     
     
 Class: 中医治疗
@@ -727,6 +2101,16 @@ Class: 中药疗法
         治法
     
     
+Class: 动物
+
+    Annotations: 
+        rdfs:label "Animal"@en,
+        rdfs:label "动物"@zh
+    
+    SubClassOf: 
+        有机体
+    
+    
 Class: Constitution
 
     Annotations: 
@@ -747,7 +2131,7 @@ Class: 药用物质
         rdfs:label "药用物质"@zh
     
     SubClassOf: 
-        物理和具象实体
+        物理对象
     
     
 Class: 中医团体
@@ -758,8 +2142,11 @@ Class: 中医团体
         rdfs:label "中医团体"@zh
     
     SubClassOf: 
-        概念实体
+        团体
     
+    
+Class: owl:Thing
+
     
 Class: 腧穴
 
@@ -842,6 +2229,16 @@ Class: 证侯
         病因病机疾病
     
     
+Class: 物质
+
+    Annotations: 
+        rdfs:label "Substance"@en,
+        rdfs:label "物质"@zh
+    
+    SubClassOf: 
+        物理对象
+    
+    
 Class: 脏腑
 
     Annotations: 
@@ -917,17 +2314,6 @@ Class: 七情
         中医心理
     
     
-Class: 针灸疗法
-
-    Annotations: 
-        rdfs:comment "Treatment of disease by inserting needles along specific pathways or meridians. The placement varies with the disease being treated. It is sometimes used in conjunction with heat, moxibustion, acupressure, or electric stimulation."@en,
-        rdfs:label "Acupuncture therapy"@en,
-        rdfs:label "针灸疗法"@zh
-    
-    SubClassOf: 
-        治法
-    
-    
 Class: 方剂
 
     Annotations: 
@@ -943,6 +2329,17 @@ Class: 方剂
     
     SubClassOf: 
         药用物质
+    
+    
+Class: 针灸疗法
+
+    Annotations: 
+        rdfs:comment "Treatment of disease by inserting needles along specific pathways or meridians. The placement varies with the disease being treated. It is sometimes used in conjunction with heat, moxibustion, acupressure, or electric stimulation."@en,
+        rdfs:label "Acupuncture therapy"@en,
+        rdfs:label "针灸疗法"@zh
+    
+    SubClassOf: 
+        治法
     
     
 Class: 神
@@ -965,17 +2362,6 @@ Class: 阴阳理论
     
     SubClassOf: 
         中医理论
-    
-    
-Class: 物理和具象实体
-
-    Annotations: 
-        rdfs:comment "An object perceptible to the sense of vision or touch. (UMLS)"@zh,
-        rdfs:label "Physical and presentational object"@en,
-        rdfs:label "物理和具象实体"@zh
-    
-    SubClassOf: 
-        实体
     
     
 Class: 毒性
@@ -1148,8 +2534,7 @@ Class: 中药
     
     EquivalentTo: 
         药用物质
-         and (使用 some 植物)
-         and (治疗 some 证侯)
+         and (治疗 some 病因病机疾病)
     
     SubClassOf: 
         药用物质
@@ -1194,8 +2579,8 @@ Individual: 石杉碱甲
         药用物质
     
     Facts:  
-     治疗  阿尔茨海默症,
      治疗  记忆减退,
+     治疗  阿尔茨海默症,
      治疗  肾阳证
     
     
@@ -1239,6 +2624,16 @@ Individual: 阳证
         证侯
     
     
+Individual: 脾
+
+    Annotations: 
+        rdfs:label "脾"@zh,
+        rdfs:label "Spleen"@en
+    
+    Types: 
+        脏
+    
+    
 Individual: 虚证
 
     Annotations: 
@@ -1252,16 +2647,6 @@ Individual: 虚证
      传递性下位概念  肾虚证,
      传递性下位概念  肾阳证,
      传递性下位概念  阳证
-    
-    
-Individual: 脾
-
-    Annotations: 
-        rdfs:label "脾"@zh,
-        rdfs:label "Spleen"@en
-    
-    Types: 
-        脏
     
     
 Individual: 人参
@@ -1304,11 +2689,11 @@ Individual: 肾阳虚证
     
     Facts:  
      传递性上位概念  虚证,
-     相关关系  阿尔茨海默症,
-     相关关系  记忆减退,
+     相关关系链  记忆减退,
+     相关关系链  怀孕,
      传递性上位概念  肾虚证,
      传递性上位概念  阳证,
-     相关关系  怀孕
+     相关关系链  阿尔茨海默症
     
     
 Individual: 肝
@@ -1341,7 +2726,7 @@ Individual: 记忆减退
         症状体征
     
     Facts:  
-     相关关系  肾阳证
+     相关关系链  肾阳证
     
     
 Individual: 辛
@@ -1354,16 +2739,6 @@ Individual: 辛
         四气五味
     
     
-Individual: 怀孕
-
-    Annotations: 
-        rdfs:label "怀孕"@zh,
-        rdfs:label "pregnancy"@en
-    
-    Types: 
-        临床状况
-    
-    
 Individual: 木
 
     Annotations: 
@@ -1373,6 +2748,16 @@ Individual: 木
     
     Types: 
         五行
+    
+    
+Individual: 怀孕
+
+    Annotations: 
+        rdfs:label "怀孕"@zh,
+        rdfs:label "pregnancy"@en
+    
+    Types: 
+        临床状况
     
     
 Individual: 苦
@@ -1406,16 +2791,6 @@ Individual: 四君子汤
      臣药  白术
     
     
-Individual: 肺
-
-    Annotations: 
-        rdfs:label "Lung"@en,
-        rdfs:label "肺"@zh
-    
-    Types: 
-        脏
-    
-    
 Individual: 甘草
 
     Annotations: 
@@ -1424,6 +2799,16 @@ Individual: 甘草
     
     Types: 
         中药
+    
+    
+Individual: 肺
+
+    Annotations: 
+        rdfs:label "Lung"@en,
+        rdfs:label "肺"@zh
+    
+    Types: 
+        脏
     
     
 Individual: 千层塔

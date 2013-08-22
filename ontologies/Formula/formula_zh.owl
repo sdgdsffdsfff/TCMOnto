@@ -24,12 +24,30 @@ ObjectProperty: owl:topObjectProperty
 ObjectProperty: 包含
 
     
+ObjectProperty: 使用
+
+    SubPropertyOf: 
+        owl:topObjectProperty
+    
+    
+Class: 植物
+
 Class: 方剂
 
     EquivalentTo: 
         药物
-         and (包含 some 药物)
+         and (包含 some 中药)
          and (治疗 some 证候)
+    
+Class: 中药
+
+    EquivalentTo: 
+        药物
+         and (使用 some 植物)
+         and (治疗 some 证候)
+    
+    SubClassOf: 
+        药物
     
     
 Class: 证候
@@ -41,7 +59,7 @@ Class: 药物
 Individual: 人参
 
     Types: 
-        药物
+        中药
     
     
 Individual: 四君子汤

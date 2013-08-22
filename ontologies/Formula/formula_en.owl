@@ -77,6 +77,15 @@ Individual: four_gentlemen_decoction
      contains  ginseng
     
     
+Individual: kidney_deficiency
+
+    Annotations: 
+        rdfs:label "肾虚"@zh
+    
+    Types: 
+        Syndrome
+    
+    
 Individual: ginseng
 
     Annotations: 
@@ -84,11 +93,5 @@ Individual: ginseng
     
     Types: 
         Medicinal
-    
-    
-Individual: kidney_deficiency
-
-    Types: 
-        Syndrome
     
     
